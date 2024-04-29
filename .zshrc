@@ -46,11 +46,22 @@ bindkey -M emacs "^[[B" down-line-or-beginning-search
 bindkey -M viins "^[[B" down-line-or-beginning-search
 bindkey -M vicmd "^[[B" down-line-or-beginning-search
 
-# Add Builder Toolbox to path
+# Builder Toolbox
 export PATH="$PATH:$HOME/.toolbox/bin"
+# GNU SED
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 
+# Set Neovim to the default editor
 export EDITOR=$(which nvim)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
