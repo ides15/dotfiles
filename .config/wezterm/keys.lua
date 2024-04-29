@@ -122,10 +122,18 @@ function module.apply_to_config(config)
 			action = act.TogglePaneZoomState,
 		},
 
+		-- Activate quick select mode
 		{
 			key = "Space",
 			mods = "SUPER|SHIFT",
 			action = act.QuickSelect,
+		},
+
+		-- Activate copy mode
+		{
+			key = "C",
+			mods = "SUPER|SHIFT",
+			action = act.ActivateCopyMode,
 		},
 
 		-- Copy
