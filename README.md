@@ -8,4 +8,4 @@ stow .
 
 Expects [homebrew](https://brew.sh/) to be installed.
 
-TODO: [Brewfile](https://github.com/Homebrew/homebrew-bundle)
+TODO: [Brewfile](https://github.com/Homebrew/homebrew-bundle), nvm installation
