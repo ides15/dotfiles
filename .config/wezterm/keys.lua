@@ -162,17 +162,38 @@ function module.apply_to_config(config)
 			mods = "CTRL|SHIFT",
 			action = act.ShowDebugOverlay,
 		},
+
+		-- Scroll up page
+		{
+			key = "K",
+			mods = "SUPER|SHIFT",
+			action = act.ScrollByLine(-30),
+		},
+
+		-- Scroll down page
+		{
+			key = "J",
+			mods = "SUPER|SHIFT",
+			action = act.ScrollByLine(30),
+		},
+
+		-- Scroll to bottom
+		{
+			key = "G",
+			mods = "SUPER|SHIFT",
+			action = act.ScrollToBottom,
+		},
 	}
 
 	config.key_tables = {
 		resize_pane = {
 			{
 				key = "h",
-				action = act.AdjustPaneSize({ "Left", 10 }),
+				action = act.AdjustPaneSize({ "Left", 5 }),
 			},
 			{
 				key = "l",
-				action = act.AdjustPaneSize({ "Right", 10 }),
+				action = act.AdjustPaneSize({ "Right", 5 }),
 			},
 			{
 				key = "Escape",
