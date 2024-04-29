@@ -82,7 +82,7 @@ function module.apply_to_config(config)
 			{ Background = { Color = colors.tab_bar.active_tab.bg_color } },
 			{ Foreground = { Color = colors.tab_bar.active_tab.fg_color } },
 			{ Attribute = { Intensity = "Bold" } },
-			{ Text = " " .. date .. " " },
+			{ Text = " " .. date .. " " .. wezterm.nerdfonts.oct_clock .. " " },
 		}
 
 		window:set_right_status(wezterm.format(right_status))
