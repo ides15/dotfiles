@@ -21,3 +21,7 @@ _darcs
 ^/README.*
 ^/LICENSE.*
 ^/COPYING
+
+^/install.sh
+^/Brewfile
+^/Brewfile.lock.json

@@ -1,3 +1,8 @@
-[user]
-	email = ide.johnc@gmail.com
-	name = John Ide
+[includeIf "gitdir:~/dev/"]
+  path = ~/dev/.gitconfig
+
+[includeIf "gitdir:~/dev/personal/"]
+  path = ~/dev/personal/.gitconfig
+
+[includeIf "gitdir:~/dotfiles/"]
+  path = ~/dev/personal/.gitconfig

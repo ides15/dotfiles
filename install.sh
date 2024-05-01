@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+# Install [homebrew](https://brew.sh/)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install all `brew` packages
+brew bundle
+
+# Create development workspace, separating work and personal
+mkdir -p ~/dev/personal
+
+# Use [GNU Stow](https://www.gnu.org/software/stow/) to manage symlinking dotfiles
+stow .
+
+# Install NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+# Install AWS CLI
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "/tmp/AWSCLIV2.pkg"
+sudo installer -pkg /tmp/AWSCLIV2.pkg -target /
