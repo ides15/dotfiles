@@ -65,3 +65,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Use Finch when using Docker with CDK
+export CDK_DOCKER="finch"

@@ -18,3 +18,6 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 # Install AWS CLI
 curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "/tmp/AWSCLIV2.pkg"
 sudo installer -pkg /tmp/AWSCLIV2.pkg -target /
+
+# Use theme for bat
+bat cache --build

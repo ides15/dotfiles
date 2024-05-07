@@ -6,3 +6,9 @@
 
 [includeIf "gitdir:~/dotfiles/"]
   path = ~/dev/personal/.gitconfig
+
+[core]
+  pager = delta
+
+[user]
+	name = John Ide

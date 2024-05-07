@@ -72,7 +72,7 @@ function module.apply_to_config(config)
 
 	-- Right status styling
 	wezterm.on("update-status", function(window)
-		local date = wezterm.strftime("%A, %B %e -%l:%M %p")
+		local date = wezterm.strftime("%A, %B%e - %I:%M %p")
 
 		local right_status = {
 			{ Foreground = { Color = colors.tab_bar.active_tab.bg_color } },

@@ -13,10 +13,11 @@ brew "stow"
 brew "tree"
 brew "wget"
 brew "zsh-syntax-highlighting"
+brew "git-delta"
 
 # Fonts
 tap "homebrew/cask-fonts"
-cask "font-fira-code-nerd-font"
+cask "font-geist-mono-nerd-font"
 
 # Work
 brew "coursier"
