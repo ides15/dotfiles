@@ -1,7 +1,7 @@
 return {
   "nvim-telescope/telescope.nvim",
   keys = {
-    { "<leader><space>", LazyVim.telescope("files", { cwd = false }), desc = "Find Files (Root Dir)" },
-    { "<leader>/", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (Root Dir)" },
+    { "<leader><space>", LazyVim.pick("auto", { root = false }), desc = "Find Files (cwd)" },
+    { "<leader>/", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
   },
 }
