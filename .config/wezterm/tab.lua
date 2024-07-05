@@ -74,16 +74,47 @@ function module.apply_to_config(config)
 	wezterm.on("update-status", function(window)
 		local date = wezterm.strftime("%A, %B %d - %I:%M %p")
 
+		-- start showing the battery percentage warning once battery is < 11
+		local BATTERY_PERCENTAGE_WARNING_THRESHOLD = 11
+
+		local battery_text = ""
+		for _, b in ipairs(wezterm.battery_info()) do
+			if (b.state_of_charge * 100) < BATTERY_PERCENTAGE_WARNING_THRESHOLD then
+				battery_text = " "
+					.. wezterm.nerdfonts.md_battery_low
+					.. " "
+					.. string.format("%.0f%%", b.state_of_charge * 100)
+					.. " "
+			end
+		end
+
 		local right_status = {
 			{ Foreground = { Color = colors.tab_bar.active_tab.bg_color } },
-			{ Background = { Color = colors.tab_bar.background } },
+			{ Background = { Color = battery_text ~= "" and colors.red or colors.tab_bar.background } },
 			{ Text = left_icon },
 
-			{ Background = { Color = colors.tab_bar.active_tab.bg_color } },
 			{ Foreground = { Color = colors.tab_bar.active_tab.fg_color } },
+			{ Background = { Color = colors.tab_bar.active_tab.bg_color } },
 			{ Attribute = { Intensity = "Bold" } },
 			{ Text = " " .. date .. " " .. wezterm.nerdfonts.oct_clock .. " " },
 		}
+
+		if battery_text ~= "" then
+			local battery_percentage_warning_elements = {
+				{ Foreground = { Color = colors.red } },
+				{ Background = { Color = colors.tab_bar.background } },
+				{ Text = left_icon },
+
+				{ Foreground = { Color = colors.tab_bar.active_tab.fg_color } },
+				{ Background = { Color = colors.red } },
+				{ Attribute = { Intensity = "Bold" } },
+				{ Text = battery_text },
+			}
+
+			for index, element in ipairs(battery_percentage_warning_elements) do
+				table.insert(right_status, index, element)
+			end
+		end
 
 		window:set_right_status(wezterm.format(right_status))
 	end)
