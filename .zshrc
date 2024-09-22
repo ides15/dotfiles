@@ -38,9 +38,8 @@ export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 # Set Neovim to the default editor
 export EDITOR=$(which nvim)
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Set up mise for runtime management
+eval "$(mise activate zsh)"
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"

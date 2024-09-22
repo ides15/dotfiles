@@ -14,6 +14,7 @@ brew "tree"
 brew "wget"
 brew "zsh-syntax-highlighting"
 brew "git-delta"
+brew "mise"
 
 # Fonts
 tap "homebrew/cask-fonts"
