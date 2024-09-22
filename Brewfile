@@ -19,7 +19,3 @@ brew "mise"
 # Fonts
 tap "homebrew/cask-fonts"
 cask "font-geist-mono-nerd-font"
-
-# Work
-brew "coursier"
-cask "finch"

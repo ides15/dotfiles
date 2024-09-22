@@ -51,6 +51,3 @@ esac
 
 # Lazygit config file directory
 export CONFIG_DIR="$HOME/.config/lazygit"
-
-# Use Finch when using Docker with CDK
-export CDK_DOCKER="finch"

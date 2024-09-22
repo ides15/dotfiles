@@ -74,8 +74,8 @@ function module.apply_to_config(config)
 	wezterm.on("update-status", function(window)
 		local date = wezterm.strftime("%A, %B %d - %I:%M %p")
 
-		-- start showing the battery percentage warning once battery is < 11
-		local BATTERY_PERCENTAGE_WARNING_THRESHOLD = 11
+		-- start showing the battery percentage warning once battery is < 10
+		local BATTERY_PERCENTAGE_WARNING_THRESHOLD = 10
 
 		local battery_text = ""
 		for _, b in ipairs(wezterm.battery_info()) do
