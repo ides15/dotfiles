@@ -15,6 +15,7 @@ brew "wget"
 brew "zsh-syntax-highlighting"
 brew "git-delta"
 brew "mise"
+cask "nikitabobko/tap/aerospace"
 
 # Fonts
 tap "homebrew/cask-fonts"
