@@ -5,9 +5,15 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Load completion helpers
+autoload -U +X compinit && compinit
+
 # Install homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export HOMEBREW_NO_AUTO_UPDATE
+
+# 1Password completion
+eval "$(op completion zsh)"; compdef _op op
 
 # Install Powerlevel10k
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
@@ -15,13 +21,14 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-source "$HOME/aliases.zsh"
-source "$HOME/history.zsh"
-source "$HOME/git.zsh"
-source "$HOME/zsh-syntax-highlighting.zsh"
-
 # vi mode
 bindkey -v
+
+source "$HOME/aliases.zsh"
+source "$HOME/git.zsh"
+source "$HOME/history.zsh"
+source "$HOME/options.zsh"
+source "$HOME/zsh-syntax-highlighting.zsh"
 
 # Bat pager
 export BAT_CONFIG_PATH="$HOME/.config/bat/bat.conf"
@@ -32,14 +39,21 @@ export LESS="-F -X $LESS"
 
 # Builder Toolbox
 export PATH="$PATH:$HOME/.toolbox/bin"
+
 # GNU SED
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+
+# Neovim (nightly)
+export PATH="/Users/jci/nvim-macos-arm64/bin:$PATH"
 
 # Set Neovim to the default editor
 export EDITOR=$(which nvim)
 
 # Set up mise for runtime management
 eval "$(mise activate zsh)"
+
+# IsengardCLI autocomplete
+eval "#(isengardcli shell-autocomplete)"
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
@@ -51,3 +65,6 @@ esac
 
 # Lazygit config file directory
 export CONFIG_DIR="$HOME/.config/lazygit"
+
+eval "$(zoxide init zsh)"
+alias cd=z

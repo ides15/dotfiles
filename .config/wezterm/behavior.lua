@@ -23,6 +23,9 @@ function module.apply_to_config(config)
 	-- How far user can scroll back in history
 	config.scrollback_lines = 100000
 
+	-- Show scroll bar
+	config.enable_scroll_bar = true
+
 	-- Patterns to find during quick select mode (SUPER+SHIFT+SPACE)
 	config.quick_select_patterns = {
 		-- sha1 hashes

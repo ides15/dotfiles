@@ -1,6 +1,10 @@
 local wezterm = require("wezterm")
 local colors = require("colors").colors
 
+local red = colors.ansi[2]
+local yellow = colors.ansi[4]
+local green = colors.ansi[3]
+
 local function tab_title(tab_info)
 	local title = tab_info.tab_title
 
@@ -13,10 +17,10 @@ end
 
 local left_icon = wezterm.nerdfonts.ple_lower_right_triangle
 local right_icon = wezterm.nerdfonts.ple_upper_left_triangle
-local circle = wezterm.nerdfonts.oct_circle
-local plus_circle = wezterm.nerdfonts.fa_plus_circle
-local minus_circle = wezterm.nerdfonts.fa_minus_circle
-local x_circle = wezterm.nerdfonts.fa_times_circle
+local circle = wezterm.nerdfonts.cod_circle_large
+local plus_circle = wezterm.nerdfonts.cod_add
+local minus_circle = wezterm.nerdfonts.cod_dash
+local x_circle = wezterm.nerdfonts.cod_close
 
 local module = {}
 
@@ -32,12 +36,12 @@ function module.apply_to_config(config)
 		})
 	end
 
-	create_window_action("window_close", colors.red, " " .. circle)
-	create_window_action("window_close_hover", colors.red, " " .. x_circle)
-	create_window_action("window_hide", colors.yellow, circle)
-	create_window_action("window_hide_hover", colors.yellow, minus_circle)
-	create_window_action("window_maximize", colors.green, circle .. " ")
-	create_window_action("window_maximize_hover", colors.green, plus_circle .. " ")
+	create_window_action("window_close", red, " " .. circle)
+	create_window_action("window_close_hover", red, " " .. x_circle)
+	create_window_action("window_hide", yellow, circle)
+	create_window_action("window_hide_hover", yellow, minus_circle)
+	create_window_action("window_maximize", green, circle .. " ")
+	create_window_action("window_maximize_hover", green, plus_circle .. " ")
 
 	config.tab_bar_style = window_actions
 
@@ -67,56 +71,6 @@ function module.apply_to_config(config)
 			{ Background = { Color = colors.tab_bar.background } },
 			{ Text = right_icon },
 		}
-	end)
-	--
-
-	-- Right status styling
-	wezterm.on("update-status", function(window)
-		local date = wezterm.strftime("%A, %B %d - %I:%M %p")
-
-		-- start showing the battery percentage warning once battery is < 10
-		local BATTERY_PERCENTAGE_WARNING_THRESHOLD = 10
-
-		local battery_text = ""
-		for _, b in ipairs(wezterm.battery_info()) do
-			if (b.state_of_charge * 100) < BATTERY_PERCENTAGE_WARNING_THRESHOLD then
-				battery_text = " "
-					.. wezterm.nerdfonts.md_battery_low
-					.. " "
-					.. string.format("%.0f%%", b.state_of_charge * 100)
-					.. " "
-			end
-		end
-
-		local right_status = {
-			{ Foreground = { Color = colors.tab_bar.active_tab.bg_color } },
-			{ Background = { Color = battery_text ~= "" and colors.red or colors.tab_bar.background } },
-			{ Text = left_icon },
-
-			{ Foreground = { Color = colors.tab_bar.active_tab.fg_color } },
-			{ Background = { Color = colors.tab_bar.active_tab.bg_color } },
-			{ Attribute = { Intensity = "Bold" } },
-			{ Text = " " .. date .. " " .. wezterm.nerdfonts.oct_clock .. " " },
-		}
-
-		if battery_text ~= "" then
-			local battery_percentage_warning_elements = {
-				{ Foreground = { Color = colors.red } },
-				{ Background = { Color = colors.tab_bar.background } },
-				{ Text = left_icon },
-
-				{ Foreground = { Color = colors.tab_bar.active_tab.fg_color } },
-				{ Background = { Color = colors.red } },
-				{ Attribute = { Intensity = "Bold" } },
-				{ Text = battery_text },
-			}
-
-			for index, element in ipairs(battery_percentage_warning_elements) do
-				table.insert(right_status, index, element)
-			end
-		end
-
-		window:set_right_status(wezterm.format(right_status))
 	end)
 	--
 

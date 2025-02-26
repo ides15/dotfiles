@@ -24,7 +24,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
-accordion-padding = 50
+accordion-padding = 16
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -56,10 +56,10 @@ on-focus-changed = ['move-mouse window-lazy-center']
 [gaps]
 inner.horizontal = 12
 inner.vertical = 12
-outer.left = 12
-outer.bottom = 12
-outer.top = 12
-outer.right = 12
+outer.left = 8
+outer.bottom = 8
+outer.top = 8
+outer.right = 8
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -95,10 +95,10 @@ alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+alt-h = 'focus left --boundaries-action stop'
+alt-j = 'focus down --boundaries-action stop'
+alt-k = 'focus up --boundaries-action stop'
+alt-l = 'focus right --boundaries-action stop'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 alt-shift-h = 'move left'
@@ -129,10 +129,10 @@ alt-f = 'workspace F'
 alt-g = 'workspace G'
 alt-i = 'workspace I'
 alt-m = 'workspace M'
-alt-n = 'workspace N'
+# alt-n = 'workspace N'
 alt-o = 'workspace O'
-alt-p = 'workspace P'
-alt-q = 'workspace Q'
+# alt-p = 'workspace P'
+# alt-q = 'workspace Q'
 alt-r = 'workspace R'
 alt-s = 'workspace S'
 alt-t = 'workspace T'
@@ -212,3 +212,7 @@ run = ['move-node-to-workspace 1']
 [[on-window-detected]]
 if.app-id = 'com.microsoft.Outlook'
 run = ['move-node-to-workspace O']
+
+[[on-window-detected]]
+if.app-id = 'com.1password.1password'
+run = ['move-node-to-workspace 4']

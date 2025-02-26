@@ -13,8 +13,11 @@
 [interactive]
   diffFilter = delta --color-only
 
+[rebase]
+  updateRefs = true
+
 [user]
-	name = John Ide
+  name = John Ide
 
 [delta]
   navigate = true

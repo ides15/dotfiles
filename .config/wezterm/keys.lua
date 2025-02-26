@@ -24,6 +24,16 @@ function module.apply_to_config(config)
 			}),
 		},
 
+		-- Create new horizontally split pane
+		{
+			key = "}",
+			mods = "SUPER|SHIFT",
+			action = act.SplitPane({
+				direction = "Down",
+				size = { Percent = 30 },
+			}),
+		},
+
 		-- Close current pane
 		{
 			key = "w",
@@ -43,6 +53,20 @@ function module.apply_to_config(config)
 			key = "l",
 			mods = "SUPER",
 			action = act.ActivatePaneDirection("Right"),
+		},
+
+		-- Move to left pane
+		{
+			key = "j",
+			mods = "SUPER",
+			action = act.ActivatePaneDirection("Down"),
+		},
+
+		-- Move to right pane
+		{
+			key = "k",
+			mods = "SUPER",
+			action = act.ActivatePaneDirection("Up"),
 		},
 
 		-- Activate pane resize key table
@@ -191,6 +215,20 @@ function module.apply_to_config(config)
 			mods = "SUPER|SHIFT",
 			action = act.ScrollToBottom,
 		},
+
+		-- Scroll to next prompt
+		{
+			key = "N",
+			mods = "SUPER|SHIFT",
+			action = act.ScrollToPrompt(1),
+		},
+
+		-- Scroll to previous prompt
+		{
+			key = "P",
+			mods = "SUPER|SHIFT",
+			action = act.ScrollToPrompt(-1),
+		},
 	}
 
 	config.key_tables = {
@@ -202,6 +240,14 @@ function module.apply_to_config(config)
 			{
 				key = "l",
 				action = act.AdjustPaneSize({ "Right", 5 }),
+			},
+			{
+				key = "j",
+				action = act.AdjustPaneSize({ "Down", 2 }),
+			},
+			{
+				key = "k",
+				action = act.AdjustPaneSize({ "Up", 2 }),
 			},
 			{
 				key = "Escape",

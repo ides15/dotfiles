@@ -7,7 +7,7 @@ setopt hist_ignore_dups
 setopt hist_verify
 
 # search backwards
-bindkey '^r' history-incremental-search-backward
+bindkey "^R" history-incremental-search-backward
 
 # Start typing + [Up-Arrow] - fuzzy find history forward
 autoload -U up-line-or-beginning-search

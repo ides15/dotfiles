@@ -1,4 +1,44 @@
-# 💤 LazyVim
+# README
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+TODO
+
+- When looking at open buffers, don't close any that are open in windows
+  - Add keymap to close any buffers not currently open in windows
+- Git history at line (would be cool to open in LazyGit)
+- On Ctrl-r (references), show fzf-lua immediately with spinner instead of not showing anything until all results are shown
+- Better looking statusline
+- Folding
+- Completions
+  - Snippets
+  - Snippet for `screen.debug(undefined, Infinity)`
+- Buffer keymaps
+  - Close all
+  - Move up/down/left/right
+- Marks
+  - Show marks in gutter
+  - fzf-lua of all marks
+- LspInfo failing to get language server versions
+- Clear messages, make messages look better, view old messages in fzf-lua
+- Better diagnostics/Trouble/tiny-inline-diagnostics
+  - Show notification somewhere if buffer has changes or diagnostics
+- Set up whichkey
+- LspRestart/LspInfo shortcut
+- Shortcut to copy filename & path
+- Do something with tabline (show tabs better)
+  - don't like the single letter directories
+- Show if the file has been modified/added in statusline with icon
+- Re-enable Harper
+- Show minimal preview of fzf-lua results
+- LazyGit
+  - when editing changes, if that buffer is already open in a tab, open in that tab
+  - proper diff highlighting
+  - better choosing of hunks during merge conflicts
+  - `cr` command shortcut
+  - #crux-interest CR tooling
+  - show inline dif in the buffer with +- ?
+- Disable formatting globally/per-buffer with hotkey and show status somewhere
+- Project picker
+- Resume session
+- Move blocks of lines up and down
+  - <https://github.com/echasnovski/mini.move>
+- See what SchemaStore with json-lsp does and if I configured it right or not
