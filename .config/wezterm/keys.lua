@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
+local cb = wezterm.action_callback
 
 local module = {}
 
@@ -242,9 +243,28 @@ function module.apply_to_config(config)
 		manage_tabs = {
 			{
 				key = "n",
-				action = act.Multiple({
-					act.SpawnTab("CurrentPaneDomain"),
-					act.ClearKeyTableStack,
+				action = act.PromptInputLine({
+					description = "Enter name for new tab",
+					action = cb(function(window, pane, line)
+						window:perform_action(act.SpawnTab("CurrentPaneDomain"), pane)
+
+						if line then
+							window:active_tab():set_title(line)
+						end
+
+						window:perform_action(act.ClearKeyTableStack, pane)
+					end),
+				}),
+			},
+			{
+				key = "i",
+				action = act.PromptInputLine({
+					description = "Enter name for tab",
+					action = wezterm.action_callback(function(window, _, line)
+						if line then
+							window:active_tab():set_title(line)
+						end
+					end),
 				}),
 			},
 			{
