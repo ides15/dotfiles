@@ -16,14 +16,6 @@ function module.apply_to_config(config)
 	-- How far user can scroll back in history
 	config.scrollback_lines = 100000
 
-	-- Patterns to find during quick select mode (SUPER+SHIFT+SPACE)
-	config.quick_select_patterns = {
-		-- sha1 hashes
-		"[0-9a-f]{7,40}",
-		-- AWS ARNs
-		"arn:[^:\n]*:[^:\n]*:[^:\n]*:[^:\n]*:[^:/\n]*[:/]?.*",
-	}
-
 	-- Only show a little padding on top
 	config.window_padding = {
 		left = 0,

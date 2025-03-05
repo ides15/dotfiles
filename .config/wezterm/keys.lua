@@ -11,6 +11,7 @@ function module.apply_to_config(config)
 	config.native_macos_fullscreen_mode = true
 
 	config.keys = {
+		-- Splits and tabs key tables
 		{
 			key = "s",
 			mods = "SUPER",
@@ -58,7 +59,26 @@ function module.apply_to_config(config)
 		{
 			key = "Space",
 			mods = "SUPER|SHIFT",
-			action = act.QuickSelect,
+			action = act.QuickSelectArgs({
+				patterns = {
+					-- Links
+					"https?://\\S+",
+					-- sha1 hashes
+					"[0-9a-f]{7,40}",
+					-- AWS ARNs
+					"arn:[^:\n]*:[^:\n]*:[^:\n]*:[^:\n]*:[^:/\n]*[:/]?.*",
+				},
+				action = cb(function(window, pane)
+					local selection = window:get_selection_text_for_pane(pane)
+
+					-- Matches HTTPS link
+					if string.gmatch(selection, "https?://\\S+") then
+						wezterm.open_with(selection)
+					else
+						window:copy_to_clipboard(selection)
+					end
+				end),
+			}),
 		},
 
 		-- Activate copy mode
