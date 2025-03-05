@@ -10,27 +10,32 @@ function module.apply_to_config(config)
 	config.native_macos_fullscreen_mode = true
 
 	config.keys = {
-		-- #########
-		-- # Panes #
-		-- #########
-
-		-- Create new vertically split pane
 		{
-			key = "|",
-			mods = "SUPER|SHIFT",
-			action = act.SplitPane({
-				direction = "Right",
-				size = { Percent = 30 },
+			key = "s",
+			mods = "SUPER",
+			action = act.ActivateKeyTable({
+				name = "splits",
 			}),
 		},
-
-		-- Create new horizontally split pane
 		{
-			key = "}",
+			key = "s",
 			mods = "SUPER|SHIFT",
-			action = act.SplitPane({
-				direction = "Down",
-				size = { Percent = 30 },
+			action = act.ActivateKeyTable({
+				name = "manage_splits",
+			}),
+		},
+		{
+			key = "t",
+			mods = "SUPER",
+			action = act.ActivateKeyTable({
+				name = "tabs",
+			}),
+		},
+		{
+			key = "t",
+			mods = "SUPER|SHIFT",
+			action = act.ActivateKeyTable({
+				name = "manage_tabs",
 			}),
 		},
 
@@ -41,109 +46,11 @@ function module.apply_to_config(config)
 			action = act.CloseCurrentPane({ confirm = false }),
 		},
 
-		-- Move to left pane
-		{
-			key = "h",
-			mods = "SUPER",
-			action = act.ActivatePaneDirection("Left"),
-		},
-
-		-- Move to right pane
-		{
-			key = "l",
-			mods = "SUPER",
-			action = act.ActivatePaneDirection("Right"),
-		},
-
-		-- Move to left pane
-		{
-			key = "j",
-			mods = "SUPER",
-			action = act.ActivatePaneDirection("Down"),
-		},
-
-		-- Move to right pane
-		{
-			key = "k",
-			mods = "SUPER",
-			action = act.ActivatePaneDirection("Up"),
-		},
-
-		-- Activate pane resize key table
-		{
-			key = "r",
-			mods = "SUPER",
-			action = act.ActivateKeyTable({
-				name = "resize_pane",
-				one_shot = false,
-			}),
-		},
-
-		-- ########
-		-- # Tabs #
-		-- ########
-
-		-- Create new tab
-		{
-			key = "t",
-			mods = "SUPER",
-			action = act.SpawnTab("CurrentPaneDomain"),
-		},
-
-		-- Close current tab
-		{
-			key = "W",
-			mods = "SUPER|SHIFT",
-			action = act.CloseCurrentTab({ confirm = false }),
-		},
-
-		-- Move to left tab
-		{
-			key = "H",
-			mods = "SUPER|SHIFT",
-			action = act.ActivateTabRelativeNoWrap(-1),
-		},
-
-		-- Move to right tab
-		{
-			key = "L",
-			mods = "SUPER|SHIFT",
-			action = act.ActivateTabRelativeNoWrap(1),
-		},
-
-		-- Activate tab reorder key table
-		{
-			key = "R",
-			mods = "SUPER|SHIFT",
-			action = act.ActivateKeyTable({
-				name = "reorder_tabs",
-				one_shot = false,
-			}),
-		},
-
-		-- ###########
-		-- # General #
-		-- ###########
-
 		-- Quit WezTerm
 		{
 			key = "q",
 			mods = "SUPER",
 			action = act.QuitApplication,
-		},
-
-		-- Make WezTerm fullscreen
-		{
-			key = "Enter",
-			mods = "SUPER",
-			action = act.ToggleFullScreen,
-		},
-
-		-- Zen mode
-		{
-			key = "z",
-			mods = "SUPER",
-			action = act.TogglePaneZoomState,
 		},
 
 		-- Activate quick select mode
@@ -232,14 +139,78 @@ function module.apply_to_config(config)
 	}
 
 	config.key_tables = {
-		resize_pane = {
+		splits = {
 			{
 				key = "h",
-				action = act.AdjustPaneSize({ "Left", 5 }),
+				action = act.ActivatePaneDirection("Left"),
+			},
+			{
+				key = "j",
+				action = act.ActivatePaneDirection("Down"),
+			},
+			{
+				key = "k",
+				action = act.ActivatePaneDirection("Up"),
 			},
 			{
 				key = "l",
-				action = act.AdjustPaneSize({ "Right", 5 }),
+				action = act.ActivatePaneDirection("Right"),
+			},
+		},
+		manage_splits = {
+			{
+				key = "n",
+				action = act.ActivateKeyTable({
+					name = "new_split",
+					one_shot = false,
+				}),
+			},
+			{
+				key = "r",
+				action = act.ActivateKeyTable({
+					name = "resize_split",
+					one_shot = false,
+				}),
+			},
+			{
+				key = "Escape",
+				action = act.PopKeyTable,
+			},
+		},
+		new_split = {
+			{
+				key = "h",
+				action = act.Multiple({
+					act.SplitPane({ direction = "Left" }),
+					act.PopKeyTable,
+				}),
+			},
+			{
+				key = "j",
+				action = act.Multiple({
+					act.SplitPane({ direction = "Down" }),
+					act.PopKeyTable,
+				}),
+			},
+			{
+				key = "k",
+				action = act.Multiple({
+					act.SplitPane({ direction = "Up" }),
+					act.PopKeyTable,
+				}),
+			},
+			{
+				key = "l",
+				action = act.Multiple({
+					act.SplitPane({ direction = "Right" }),
+					act.PopKeyTable,
+				}),
+			},
+		},
+		resize_split = {
+			{
+				key = "h",
+				action = act.AdjustPaneSize({ "Left", 5 }),
 			},
 			{
 				key = "j",
@@ -250,22 +221,56 @@ function module.apply_to_config(config)
 				action = act.AdjustPaneSize({ "Up", 2 }),
 			},
 			{
+				key = "l",
+				action = act.AdjustPaneSize({ "Right", 5 }),
+			},
+			{
 				key = "Escape",
-				action = "PopKeyTable",
+				action = act.ClearKeyTableStack,
 			},
 		},
-		reorder_tabs = {
+		tabs = {
 			{
-				key = "h",
+				key = "[",
+				action = act.ActivateTabRelativeNoWrap(-1),
+			},
+			{
+				key = "]",
+				action = act.ActivateTabRelativeNoWrap(1),
+			},
+		},
+		manage_tabs = {
+			{
+				key = "n",
+				action = act.Multiple({
+					act.SpawnTab("CurrentPaneDomain"),
+					act.ClearKeyTableStack,
+				}),
+			},
+			{
+				key = "r",
+				action = act.ActivateKeyTable({
+					name = "reorder_tab",
+					one_shot = false,
+				}),
+			},
+			{
+				key = "Escape",
+				action = act.PopKeyTable,
+			},
+		},
+		reorder_tab = {
+			{
+				key = "[",
 				action = act.MoveTabRelative(-1),
 			},
 			{
-				key = "l",
+				key = "]",
 				action = act.MoveTabRelative(1),
 			},
 			{
 				key = "Escape",
-				action = "PopKeyTable",
+				action = act.ClearKeyTableStack,
 			},
 		},
 	}

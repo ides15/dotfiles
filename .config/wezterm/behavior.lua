@@ -13,18 +13,8 @@ function module.apply_to_config(config)
 	-- Use WebGpu GPU acceleration (Metal on MacOS)
 	config.front_end = "WebGpu"
 
-	-- When opening WezTerm, this is how big the window should be
-	config.initial_cols = 150
-	config.initial_rows = 40
-
-	-- If opening a new window of WezTerm, try to instead add a new tab to an existing window instead
-	config.prefer_to_spawn_tabs = true
-
 	-- How far user can scroll back in history
 	config.scrollback_lines = 100000
-
-	-- Show scroll bar
-	config.enable_scroll_bar = true
 
 	-- Patterns to find during quick select mode (SUPER+SHIFT+SPACE)
 	config.quick_select_patterns = {
@@ -36,9 +26,9 @@ function module.apply_to_config(config)
 
 	-- Only show a little padding on top
 	config.window_padding = {
-		left = "5pt",
-		right = "5pt",
-		top = "5pt",
+		left = 0,
+		right = 0,
+		top = 0,
 		bottom = 0,
 	}
 end
