@@ -1,0 +1,50 @@
+font-family = GeistMono NFM
+theme = Kanagawa Wave
+mouse-hide-while-typing = true
+working-directory = /Users/jci/dev
+macos-titlebar-style = tabs
+macos-titlebar-proxy-icon = hidden
+macos-icon = holographic
+linux-cgroup = always
+
+keybind = clear
+keybind = cmd+shift+r=reload_config
+keybind = cmd+c=copy_to_clipboard
+keybind = cmd+v=paste_from_clipboard
+keybind = all:cmd+equal=increase_font_size:1
+keybind = all:cmd+minus=decrease_font_size:1
+keybind = all:cmd+shift+equal=reset_font_size
+keybind = all:cmd+shift+minus=reset_font_size
+keybind = cmd+w=close_surface
+
+# Prompt
+keybind = cmd+j=scroll_page_lines:1
+keybind = cmd+k=scroll_page_lines:-1
+keybind = cmd+g=scroll_to_top
+keybind = cmd+shift+g=scroll_to_bottom
+keybind = cmd+p=jump_to_prompt:-3
+keybind = cmd+n=jump_to_prompt:3
+
+# Tabs
+keybind = cmd+t=new_tab
+keybind = cmd+left_bracket=previous_tab
+keybind = cmd+right_bracket=next_tab
+keybind = cmd+shift+left_bracket=move_tab:-1
+keybind = cmd+shift+right_bracket=move_tab:1
+
+# Splits
+keybind = cmd+s>l=goto_split:right
+keybind = cmd+s>h=goto_split:left
+keybind = cmd+s>k=goto_split:up
+keybind = cmd+s>j=goto_split:down
+keybind = cmd+s>n>l=new_split:right
+keybind = cmd+s>n>h=new_split:left
+keybind = cmd+s>n>k=new_split:up
+keybind = cmd+s>n>j=new_split:down
+keybind = cmd+s>equal=equalize_splits
+
+# Resize
+keybind = cmd+r>l=resize_split:right,50
+keybind = cmd+r>h=resize_split:left,50
+keybind = cmd+r>k=resize_split:up,50
+keybind = cmd+r>j=resize_split:down,50
