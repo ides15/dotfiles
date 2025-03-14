@@ -56,13 +56,20 @@ return {
             hls = {},
         })
 
-        vim.api.nvim_set_hl(0, "FzfLuaBackdrop", { link = "FzfLuaNormal" })
+        vim.api.nvim_set_hl(
+            0,
+            "FzfLuaBackdrop",
+            { link = "FzfLuaNormal" }
+        )
     end,
     keys = {
         {
             "<leader>f",
             function()
-                vim.api.nvim_exec_autocmds("User", { pattern = "PickerFiles" })
+                vim.api.nvim_exec_autocmds(
+                    "User",
+                    { pattern = "PickerFiles" }
+                )
                 require("fzf-lua").files()
             end,
             desc = "List files",
@@ -70,7 +77,10 @@ return {
         {
             "<leader>/",
             function()
-                vim.api.nvim_exec_autocmds("User", { pattern = "PickerLiveGrep" })
+                vim.api.nvim_exec_autocmds(
+                    "User",
+                    { pattern = "PickerLiveGrep" }
+                )
                 require("fzf-lua").live_grep()
             end,
             desc = "Grep files",
@@ -78,7 +88,10 @@ return {
         {
             "<leader>r",
             function()
-                vim.api.nvim_exec_autocmds("User", { pattern = "PickerResume" })
+                vim.api.nvim_exec_autocmds(
+                    "User",
+                    { pattern = "PickerResume" }
+                )
                 require("fzf-lua").resume()
             end,
             desc = "Resume last picker",
@@ -86,7 +99,10 @@ return {
         {
             "<leader>.",
             function()
-                vim.api.nvim_exec_autocmds("User", { pattern = "PickerBuffers" })
+                vim.api.nvim_exec_autocmds(
+                    "User",
+                    { pattern = "PickerBuffers" }
+                )
                 require("fzf-lua").buffers()
             end,
             desc = "List open buffers",
@@ -94,7 +110,10 @@ return {
         {
             "<leader>h",
             function()
-                vim.api.nvim_exec_autocmds("User", { pattern = "PickerBuffers" })
+                vim.api.nvim_exec_autocmds(
+                    "User",
+                    { pattern = "PickerBuffers" }
+                )
                 require("fzf-lua").highlights()
             end,
             desc = "List highlights",

@@ -2,8 +2,6 @@
 
 TODO
 
-- When looking at open buffers, don't close any that are open in windows
-  - Add keymap to close any buffers not currently open in windows
 - Git history at line (would be cool to open in LazyGit)
 - On Ctrl-r (references), show fzf-lua immediately with spinner instead of not showing anything until all results are shown
 - Better looking statusline

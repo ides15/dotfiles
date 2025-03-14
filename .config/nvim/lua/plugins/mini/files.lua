@@ -36,12 +36,15 @@ local sort = function(entries)
 
     local output_lines = {}
 
-    local job_id = vim.fn.jobstart({ "git", "check-ignore", "--stdin" }, {
-        stdout_buffered = true,
-        on_stdout = function(_, data)
-            output_lines = data
-        end,
-    })
+    local job_id = vim.fn.jobstart(
+        { "git", "check-ignore", "--stdin" },
+        {
+            stdout_buffered = true,
+            on_stdout = function(_, data)
+                output_lines = data
+            end,
+        }
+    )
 
     -- Command failed to run
     if job_id < 1 then
@@ -100,8 +103,16 @@ files.setup({
 })
 
 -- Give folders different colors
-vim.api.nvim_set_hl(0, "MiniFilesDirectory", { fg = "#908caa", bold = true })
-vim.api.nvim_set_hl(0, "MiniFilesFile", { fg = "#e0def4", bold = false })
+vim.api.nvim_set_hl(
+    0,
+    "MiniFilesDirectory",
+    { fg = "#908caa", bold = true }
+)
+vim.api.nvim_set_hl(
+    0,
+    "MiniFilesFile",
+    { fg = "#e0def4", bold = false }
+)
 vim.api.nvim_set_hl(0, "MiniFilesNormal", { bg = "#1A1825" })
 
 -- Don't allow both picker and mini.files to be open at the same time
@@ -130,8 +141,23 @@ vim.api.nvim_create_autocmd("User", {
     callback = function(args)
         local buf_id = args.data.buf_id
 
-        vim.keymap.set("n", "<C-h>", toggle_hidden, { buffer = buf_id, desc = "Toggle hidden files" })
-        vim.keymap.set("n", "<C-g>", toggle_gitignore, { buffer = buf_id, desc = "Toggle gitignored files" })
-        vim.keymap.set("n", "<C-v>", open_file, { buffer = buf_id, desc = "Open file in vertical split" })
+        vim.keymap.set(
+            "n",
+            "<C-h>",
+            toggle_hidden,
+            { buffer = buf_id, desc = "Toggle hidden files" }
+        )
+        vim.keymap.set(
+            "n",
+            "<C-g>",
+            toggle_gitignore,
+            { buffer = buf_id, desc = "Toggle gitignored files" }
+        )
+        vim.keymap.set(
+            "n",
+            "<C-v>",
+            open_file,
+            { buffer = buf_id, desc = "Open file in vertical split" }
+        )
     end,
 })

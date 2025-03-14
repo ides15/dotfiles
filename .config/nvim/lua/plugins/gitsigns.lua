@@ -25,6 +25,10 @@ return {
     config = function(_, opts)
         require("gitsigns").setup(opts)
 
-        vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { link = "Comment" })
+        vim.api.nvim_set_hl(
+            0,
+            "GitSignsCurrentLineBlame",
+            { link = "Comment" }
+        )
     end,
 }
