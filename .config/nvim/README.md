@@ -9,8 +9,6 @@ TODO
 - Completions
   - Snippets
   - Snippet for `screen.debug(undefined, Infinity)`
-- Marks
-  - Show marks in gutter
 - LspInfo failing to get language server versions
 - Clear messages, make messages look better, view old messages in fzf-lua
 - Better diagnostics/Trouble/tiny-inline-diagnostics
