@@ -5,15 +5,30 @@ return {
         on_attach = function()
             local gitsigns = require("gitsigns")
 
-            vim.keymap.set("n", "<leader>ghp", gitsigns.preview_hunk)
-            vim.keymap.set("n", "<leader>ghr", gitsigns.reset_hunk)
+            vim.keymap.set(
+                "n",
+                "<leader>ghp",
+                gitsigns.preview_hunk,
+                { desc = "Preview diff" }
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>ghr",
+                gitsigns.reset_hunk,
+                { desc = "Reset" }
+            )
             vim.keymap.set("v", "<leader>ghr", function()
                 gitsigns.reset_hunk({
                     vim.fn.line("."),
                     vim.fn.line("v"),
                 })
-            end)
-            vim.keymap.set("n", "<leader>ghR", gitsigns.reset_buffer)
+            end, { desc = "Reset selection" })
+            vim.keymap.set(
+                "n",
+                "<leader>ghR",
+                gitsigns.reset_buffer,
+                { desc = "Reset entire buffer" }
+            )
         end,
         current_line_blame = true,
         current_line_blame_opts = {

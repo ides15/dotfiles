@@ -66,7 +66,7 @@ return {
                     require("fzf-lua").lsp_code_actions()
                 end, {
                     buffer = event.buf,
-                    desc = "",
+                    desc = "Trigger code actions menu",
                 })
             end,
         })

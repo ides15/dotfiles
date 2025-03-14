@@ -13,6 +13,7 @@ return {
             function()
                 require("snacks").lazygit.open()
             end,
+            { desc = "LazyGit" },
         },
     },
 }

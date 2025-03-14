@@ -1,3 +1,18 @@
+local function findFiles()
+    vim.api.nvim_exec_autocmds("User", { pattern = "PickerFiles" })
+    require("fzf-lua").files()
+end
+
+local function findBuffers()
+    vim.api.nvim_exec_autocmds("User", { pattern = "PickerBuffers" })
+    require("fzf-lua").buffers()
+end
+
+local function searchFiles()
+    vim.api.nvim_exec_autocmds("User", { pattern = "PickerLiveGrep" })
+    require("fzf-lua").live_grep()
+end
+
 return {
     "ibhagwan/fzf-lua",
     dependencies = { "echasnovski/mini.nvim" },
@@ -64,26 +79,34 @@ return {
     end,
     keys = {
         {
-            "<leader>f",
-            function()
-                vim.api.nvim_exec_autocmds(
-                    "User",
-                    { pattern = "PickerFiles" }
-                )
-                require("fzf-lua").files()
-            end,
-            desc = "List files",
+            "<leader>,",
+            findFiles,
+            desc = "Find files",
+        },
+        {
+            "<leader>ff",
+            findFiles,
+            desc = "Find files",
+        },
+        {
+            "<leader>.",
+            findBuffers,
+            desc = "Find open buffers",
+        },
+        {
+            "<leader>fb",
+            findBuffers,
+            desc = "Find open buffers",
         },
         {
             "<leader>/",
-            function()
-                vim.api.nvim_exec_autocmds(
-                    "User",
-                    { pattern = "PickerLiveGrep" }
-                )
-                require("fzf-lua").live_grep()
-            end,
-            desc = "Grep files",
+            searchFiles,
+            desc = "Search files",
+        },
+        {
+            "<leader>sf",
+            searchFiles,
+            desc = "Search files",
         },
         {
             "<leader>r",
@@ -97,18 +120,7 @@ return {
             desc = "Resume last picker",
         },
         {
-            "<leader>.",
-            function()
-                vim.api.nvim_exec_autocmds(
-                    "User",
-                    { pattern = "PickerBuffers" }
-                )
-                require("fzf-lua").buffers()
-            end,
-            desc = "List open buffers",
-        },
-        {
-            "<leader>h",
+            "<leader>fh",
             function()
                 vim.api.nvim_exec_autocmds(
                     "User",
@@ -116,7 +128,7 @@ return {
                 )
                 require("fzf-lua").highlights()
             end,
-            desc = "List highlights",
+            desc = "Find highlights",
         },
     },
 }
