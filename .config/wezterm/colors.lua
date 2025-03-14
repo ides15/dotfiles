@@ -48,7 +48,7 @@ local kanagawa = {
 				fg_color = "#1f1f28",
 			},
 			inactive_tab = {
-				bg_color = "#1f1f28",
+				bg_color = "#363646",
 				fg_color = "#dcd7ba",
 			},
 		},
