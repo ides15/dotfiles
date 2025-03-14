@@ -78,6 +78,15 @@ function module.apply_to_config(config)
 	config.tab_max_width = 30
 	config.show_new_tab_button_in_tab_bar = false
 	config.show_tab_index_in_tab_bar = false
+
+	-- Show which key table is active in the status area
+	wezterm.on("update-right-status", function(window)
+		local name = window:active_key_table()
+		if name then
+			name = name
+		end
+		window:set_right_status(name or "")
+	end)
 end
 
 return module
