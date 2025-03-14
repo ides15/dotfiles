@@ -88,6 +88,13 @@ function module.apply_to_config(config)
 			action = act.ActivateCopyMode,
 		},
 
+		-- Activate search mode
+		{
+			key = "f",
+			mods = "SUPER",
+			action = act.Search("CurrentSelectionOrEmptyString"),
+		},
+
 		-- Copy
 		{
 			key = "c",
@@ -227,6 +234,10 @@ function module.apply_to_config(config)
 					act.PopKeyTable,
 				}),
 			},
+			{
+				key = "Escape",
+				action = act.PopKeyTable,
+			},
 		},
 		resize_split = {
 			{
@@ -247,7 +258,7 @@ function module.apply_to_config(config)
 			},
 			{
 				key = "Escape",
-				action = act.ClearKeyTableStack,
+				action = act.PopKeyTable,
 			},
 		},
 		tabs = {
@@ -272,7 +283,7 @@ function module.apply_to_config(config)
 							window:active_tab():set_title(line)
 						end
 
-						window:perform_action(act.ClearKeyTableStack, pane)
+						window:perform_action(act.PopKeyTable, pane)
 					end),
 				}),
 			},
@@ -310,7 +321,140 @@ function module.apply_to_config(config)
 			},
 			{
 				key = "Escape",
-				action = act.ClearKeyTableStack,
+				action = act.PopKeyTable,
+			},
+		},
+		copy_mode = {
+			{
+				key = "h",
+				action = act.CopyMode("MoveLeft"),
+			},
+			{
+				key = "j",
+				action = act.CopyMode("MoveDown"),
+			},
+			{
+				key = "k",
+				action = act.CopyMode("MoveUp"),
+			},
+			{
+				key = "l",
+				action = act.CopyMode("MoveRight"),
+			},
+			{
+				key = "w",
+				action = act.CopyMode("MoveForwardWord"),
+			},
+			{
+				key = "b",
+				action = act.CopyMode("MoveBackwardWord"),
+			},
+			{
+				key = "e",
+				action = act.CopyMode("MoveForwardWordEnd"),
+			},
+			{
+				key = "$",
+				mods = "SHIFT",
+				action = act.CopyMode("MoveToEndOfLineContent"),
+			},
+			{
+				key = "0",
+				action = act.CopyMode("MoveToStartOfLine"),
+			},
+			{
+				key = "v",
+				action = act.CopyMode({ SetSelectionMode = "Cell" }),
+			},
+			{
+				key = "v",
+				mods = "CTRL",
+				action = act.CopyMode({ SetSelectionMode = "Block" }),
+			},
+			{
+				key = "V",
+				mods = "SHIFT",
+				action = act.CopyMode({ SetSelectionMode = "Line" }),
+			},
+			{
+				key = ",",
+				action = act.CopyMode("JumpReverse"),
+			},
+			{
+				key = ";",
+				action = act.CopyMode("JumpAgain"),
+			},
+			{
+				key = "f",
+				action = act.CopyMode({ JumpForward = { prev_char = false } }),
+			},
+			{
+				key = "F",
+				mods = "SHIFT",
+				action = act.CopyMode({ JumpBackward = { prev_char = false } }),
+			},
+			{
+				key = "u",
+				mods = "CTRL",
+				action = act.CopyMode({ MoveByPage = -0.5 }),
+			},
+			{
+				key = "d",
+				mods = "CTRL",
+				action = act.CopyMode({ MoveByPage = 0.5 }),
+			},
+			{
+				key = "y",
+				action = act.Multiple({
+					{ CopyTo = "ClipboardAndPrimarySelection" },
+					{ CopyMode = "MoveToScrollbackBottom" },
+					{ CopyMode = "Close" },
+				}),
+			},
+			{
+				key = "G",
+				mods = "SHIFT",
+				action = act.CopyMode("MoveToScrollbackBottom"),
+			},
+			{
+				key = "Escape",
+				action = act.Multiple({
+					{ CopyMode = "MoveToScrollbackBottom" },
+					{ CopyMode = "Close" },
+				}),
+			},
+		},
+		search_mode = {
+			{
+				key = "n",
+				mods = "SUPER",
+				action = act.CopyMode("NextMatch"),
+			},
+			{
+				key = "p",
+				mods = "SUPER",
+				action = act.CopyMode("PriorMatch"),
+			},
+			{
+				key = "r",
+				mods = "SUPER",
+				action = act.CopyMode("CycleMatchType"),
+			},
+			{
+				key = "Enter",
+				action = act.Multiple({
+					{ CopyMode = "ClearPattern" },
+					{ CopyMode = "ClearSelectionMode" },
+					act.ActivateCopyMode,
+				}),
+			},
+			{
+				key = "Escape",
+				action = act.Multiple({
+					{ CopyMode = "ClearPattern" },
+					{ CopyMode = "ClearSelectionMode" },
+					act.ActivateCopyMode,
+				}),
 			},
 		},
 	}
