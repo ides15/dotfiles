@@ -14,6 +14,7 @@ require("mason-lspconfig").setup({
         "graphql",
         "bashls",
         "marksman",
+        "yamlls",
     },
     handlers = {
         function(server_name)
