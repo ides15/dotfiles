@@ -13,6 +13,9 @@
 [user]
   name = John Ide
 
+[diff]
+  colorMoved = default
+
 [core]
   pager = delta
 
@@ -29,3 +32,4 @@
   syntax-theme = kanagawa
   side-by-side = true
   line-numbers = true
+  hyperlinks = true
