@@ -106,7 +106,7 @@ keybinding:
     filteringMenu: <c-s>
     diffingMenu: W
     submitEditorText: <enter>
-    extrasMenu: '@'
+    extrasMenu: "@"
     toggleWhitespaceInDiffView: <c-w>
     increaseContextInDiffView: "}"
     decreaseContextInDiffView: "{"
@@ -138,9 +138,9 @@ keybinding:
     collapseAll: "-"
     expandAll: =
   branches:
-    createPullRequest: o
-    viewPullRequestOptions: O
-    copyPullRequestURL: <c-y>
+    # createPullRequest: o
+    # viewPullRequestOptions: O
+    # copyPullRequestURL: <c-y>
     checkoutBranchByName: c
     forceCheckoutBranch: F
     rebaseBranch: r
@@ -199,3 +199,24 @@ keybinding:
     bulkMenu: b
   commitMessage:
     commitMenu: <c-o>
+
+customCommands:
+  - key: o
+    description: Open or update a CR
+    context: localBranches,files,commits
+    prompts:
+      - type: input
+        title: Enter the URL of an existing revision (if applicable)
+        key: ExistingRevision
+      - type: input
+        title: Enter the name of the parent branch
+        key: ParentBranch
+        suggestions:
+          preset: branches
+      - type: input
+        title: Enter the name of the destination branch
+        key: DestinationBranch
+        suggestions:
+          preset: branches
+    command: "cr {{if .Form.ExistingRevision}} --update-review {{.Form.ExistingRevision}} {{else}} --new-review {{end}} --parent {{.Form.ParentBranch}} --destination-branch {{.Form.DestinationBranch}}"
+    subprocess: true
