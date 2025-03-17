@@ -15,30 +15,12 @@ function module.apply_to_config(config)
 		{
 			key = "s",
 			mods = "SUPER",
-			action = act.ActivateKeyTable({
-				name = "splits",
-			}),
-		},
-		{
-			key = "s",
-			mods = "SUPER|SHIFT",
-			action = act.ActivateKeyTable({
-				name = "manage_splits",
-			}),
+			action = act.ActivateKeyTable({ name = "splits" }),
 		},
 		{
 			key = "t",
 			mods = "SUPER",
-			action = act.ActivateKeyTable({
-				name = "tabs",
-			}),
-		},
-		{
-			key = "t",
-			mods = "SUPER|SHIFT",
-			action = act.ActivateKeyTable({
-				name = "manage_tabs",
-			}),
+			action = act.ActivateKeyTable({ name = "tabs" }),
 		},
 
 		-- Close current pane
@@ -184,13 +166,10 @@ function module.apply_to_config(config)
 				key = "l",
 				action = act.ActivatePaneDirection("Right"),
 			},
-		},
-		manage_splits = {
 			{
 				key = "n",
 				action = act.ActivateKeyTable({
 					name = "new_split",
-					one_shot = false,
 				}),
 			},
 			{
@@ -208,31 +187,19 @@ function module.apply_to_config(config)
 		new_split = {
 			{
 				key = "h",
-				action = act.Multiple({
-					act.SplitPane({ direction = "Left" }),
-					act.PopKeyTable,
-				}),
+				action = act.SplitPane({ direction = "Left" }),
 			},
 			{
 				key = "j",
-				action = act.Multiple({
-					act.SplitPane({ direction = "Down" }),
-					act.PopKeyTable,
-				}),
+				action = act.SplitPane({ direction = "Down" }),
 			},
 			{
 				key = "k",
-				action = act.Multiple({
-					act.SplitPane({ direction = "Up" }),
-					act.PopKeyTable,
-				}),
+				action = act.SplitPane({ direction = "Up" }),
 			},
 			{
 				key = "l",
-				action = act.Multiple({
-					act.SplitPane({ direction = "Right" }),
-					act.PopKeyTable,
-				}),
+				action = act.SplitPane({ direction = "Right" }),
 			},
 			{
 				key = "Escape",
@@ -270,8 +237,6 @@ function module.apply_to_config(config)
 				key = "]",
 				action = act.ActivateTabRelativeNoWrap(1),
 			},
-		},
-		manage_tabs = {
 			{
 				key = "n",
 				action = act.PromptInputLine({
