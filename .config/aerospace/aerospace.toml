@@ -28,6 +28,11 @@ alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
+ctrl-alt-h = 'join-with left'
+ctrl-alt-j = 'join-with down'
+ctrl-alt-k = 'join-with up'
+ctrl-alt-l = 'join-with right'
+
 alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
 
@@ -106,11 +111,6 @@ f = [
   'layout floating tiling',
   'mode main',
 ]
-
-alt-shift-h = ['join-with left', 'mode main']
-alt-shift-j = ['join-with down', 'mode main']
-alt-shift-k = ['join-with up', 'mode main']
-alt-shift-l = ['join-with right', 'mode main']
 
 # Windows
 [[on-window-detected]]
