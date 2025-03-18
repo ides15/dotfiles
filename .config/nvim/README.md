@@ -20,12 +20,10 @@ TODO
 - Show if the file has been modified/added in statusline with icon
 - Re-enable Harper
 - Show minimal preview of fzf-lua results
-- LazyGit
-  - when editing changes, if that buffer is already open in a tab, open in that tab
-  - proper diff highlighting
+- Git
+  - when editing changes in LazyGit, if that buffer is already open in a tab, open in that tab
+  - proper diff/merge highlighting
   - better choosing of hunks during merge conflicts
-  - `cr` command shortcut
-  - #crux-interest CR tooling
   - show inline dif in the buffer with +- ?
 - Disable formatting globally/per-buffer with hotkey and show status somewhere
 - Project picker

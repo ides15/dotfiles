@@ -216,6 +216,7 @@ customCommands:
       - type: input
         title: Enter the name of the destination branch
         key: DestinationBranch
+        initialValue: mainline
         suggestions:
           preset: branches
     command: "cr {{if .Form.ExistingRevision}} --update-review {{.Form.ExistingRevision}} {{else}} --new-review {{end}} --parent {{.Form.ParentBranch}} --destination-branch {{.Form.DestinationBranch}}"
