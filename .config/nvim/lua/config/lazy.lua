@@ -27,10 +27,9 @@ require("lazy").setup("plugins", {
         colorscheme = { "kanagawa" },
     },
     ui = {
-        size = {
-            height = 0.5,
-            width = 0.85,
-        },
+        size = { height = 0.5, width = 0.9 },
+        border = "rounded",
+        title = "Lazy",
     },
     checker = {
         enabled = true,
