@@ -25,7 +25,6 @@ TODO
   - proper diff/merge highlighting
   - better choosing of hunks during merge conflicts
   - show inline dif in the buffer with +- ?
-- Disable formatting globally/per-buffer with hotkey and show status somewhere
 - Project picker
 - Resume session
 - Move blocks of lines up and down
