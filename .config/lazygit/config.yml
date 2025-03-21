@@ -24,10 +24,10 @@ gui:
     "*": "#c8c093"
 
   branchColorPatterns:
-    "master": "#7e9cd8"
-    "main": "#7e9cd8"
-    "mainline": "#7e9cd8"
-    "release-*": "#7e9cd8"
+    "^master$": "#7e9cd8"
+    "^main$": "#7e9cd8"
+    "^mainline$": "#7e9cd8"
+    "^release-*": "#7e9cd8"
 
   showNumstatInFilesView: true
 
