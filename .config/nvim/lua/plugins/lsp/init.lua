@@ -1,76 +1,56 @@
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
         {
-            "williamboman/mason.nvim",
-            dependencies = {
-                "b0o/schemastore.nvim",
-            },
+            "pmizio/typescript-tools.nvim",
+            dependencies = { "nvim-lua/plenary.nvim" },
         },
-        {
-            "williamboman/mason-lspconfig.nvim",
-            -- dependencies = {
-            --     "hrsh7th/cmp-nvim-lsp",
-            -- },
-        },
+        "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
+        require("plugins.lsp.mason")
+
         vim.api.nvim_create_autocmd("LspAttach", {
             desc = "LSP actions",
             callback = function(event)
-                -- Hover
-                vim.keymap.set("n", "K", function()
-                    vim.lsp.buf.hover()
-                end, {
-                    buffer = event.buf,
-                    desc = "Hover",
-                })
+                local map = function(mode, lhs, rhs, o)
+                    local opts = o or {}
+                    opts.buffer = event.buf
 
-                -- Go to definition
-                vim.keymap.set("n", "gd", function()
+                    vim.keymap.set(mode, lhs, rhs, opts)
+                end
+
+                map("n", "K", function()
+                    vim.lsp.buf.hover({
+                        border = "solid",
+                    })
+                end, { desc = "Hover" })
+
+                map("n", "gd", function()
                     require("fzf-lua").lsp_definitions()
-                end, {
-                    buffer = event.buf,
-                    desc = "Go to definition",
-                })
+                end, { desc = "Definition" })
 
-                -- Go to implementation
-                vim.keymap.set("n", "gi", function()
+                map("n", "gi", function()
                     require("fzf-lua").lsp_implementations()
-                end, {
-                    buffer = event.buf,
-                    desc = "Go to implementation",
-                })
+                end, { desc = "Implementations" })
 
-                -- Go to references
-                vim.keymap.set("n", "gr", function()
+                map("n", "gr", function()
                     require("fzf-lua").lsp_references({
                         ignore_current_line = true,
                         includeDeclaration = false,
                     })
-                end, {
-                    buffer = event.buf,
-                    desc = "Go to references",
-                })
+                end, { desc = "References" })
 
-                -- Code Rename
-                vim.keymap.set("n", "<leader>cr", function()
+                map("n", "cr", function()
                     vim.lsp.buf.rename()
-                end, {
-                    buffer = event.buf,
-                    desc = "Rename",
-                })
+                end, { desc = "Rename" })
 
-                -- Code Actions
-                vim.keymap.set("n", "<leader>ca", function()
+                map("n", "ca", function()
                     require("fzf-lua").lsp_code_actions()
-                end, {
-                    buffer = event.buf,
-                    desc = "Trigger code actions menu",
-                })
+                end, { desc = "Actions" })
             end,
         })
-
-        require("plugins/lsp/mason")
     end,
 }

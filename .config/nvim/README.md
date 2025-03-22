@@ -9,7 +9,6 @@ TODO
 - Completions
   - Snippets
   - Snippet for `screen.debug(undefined, Infinity)`
-- LspInfo failing to get language server versions
 - Clear messages, make messages look better, view old messages in fzf-lua
 - Better diagnostics/Trouble/tiny-inline-diagnostics
   - Show notification somewhere if buffer has changes or diagnostics

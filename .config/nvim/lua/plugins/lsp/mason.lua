@@ -1,49 +1,52 @@
 local lspconfig = require("lspconfig")
+local mason = require("mason")
+local mason_lspconfig = require("mason-lspconfig")
 
-require("mason").setup({})
+mason.setup({
+    ui = {
+        border = "rounded",
+        width = 0.9,
+        height = 0.9,
+    },
+})
 
--- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+lspconfig.util.default_config.capabilities = vim.tbl_deep_extend(
+    "force",
+    lspconfig.util.default_config.capabilities,
+    require("cmp_nvim_lsp").default_capabilities()
+)
 
-require("mason-lspconfig").setup({
+mason_lspconfig.setup({
     ensure_installed = {
-        -- "harper_ls",
-        "lua_ls",
-        "vtsls",
-        "eslint",
-        "jsonls",
-        "graphql",
         "bashls",
+        "eslint",
+        "graphql",
+        "jsonls",
+        "lua_ls",
         "marksman",
         "yamlls",
+        "vtsls",
     },
     handlers = {
         function(server_name)
-            lspconfig[server_name].setup({
-                -- capabilities = capabilities,
-            })
+            lspconfig[server_name].setup({})
         end,
-
-        jsonls = function()
-            lspconfig.jsonls.setup({
+        vtsls = function()
+            require("typescript-tools").setup({
                 settings = {
-                    jsonls = {
-                        schemas = require("schemastore").json.schemas(),
-                        validate = {
-                            enable = true,
-                        },
-                    },
+                    expose_as_code_action = "all",
+                    jsx_close_tag = { enable = true },
                 },
             })
         end,
-
-        harper_ls = function()
-            lspconfig.harper_ls.setup({
-                settings = {
-                    ["harper-ls"] = {
-                        userDictPath = "~/.config/harper-ls/dict.txt",
-                        fileDictPath = "~/.config/harper-ls/file-local/",
-                    },
-                },
+        eslint = function()
+            lspconfig.eslint.setup({
+                on_attach = function(_, bufnr)
+                    vim.api.nvim_create_autocmd("BufWritePre", {
+                        buffer = bufnr,
+                        command = "EslintFixAll",
+                    })
+                end,
             })
         end,
     },
