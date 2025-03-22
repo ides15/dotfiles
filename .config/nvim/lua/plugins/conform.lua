@@ -26,7 +26,7 @@ return {
             function()
                 require("conform").format({ async = true })
             end,
-            desc = "Code format",
+            desc = "Format file",
         },
         {
             "<leader>cfb",
