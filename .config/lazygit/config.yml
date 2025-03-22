@@ -43,6 +43,8 @@ gui:
 
   border: rounded
 
+  skipDiscardChangeWarning: true
+
 git:
   paging:
     colorArg: always
