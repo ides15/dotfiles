@@ -31,14 +31,6 @@ mason_lspconfig.setup({
         function(server_name)
             lspconfig[server_name].setup({})
         end,
-        vtsls = function()
-            require("typescript-tools").setup({
-                settings = {
-                    expose_as_code_action = "all",
-                    jsx_close_tag = { enable = true },
-                },
-            })
-        end,
         eslint = function()
             lspconfig.eslint.setup({
                 on_attach = function(_, bufnr)

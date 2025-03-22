@@ -50,6 +50,21 @@ return {
                 map("n", "ca", function()
                     require("fzf-lua").lsp_code_actions()
                 end, { desc = "Actions" })
+
+                local client =
+                    vim.lsp.get_client_by_id(event.data.client_id)
+
+                if not client then
+                    return
+                end
+
+                -- Server-specific configurations
+                local ok, module =
+                    pcall(require, "plugins.lsp." .. client.name)
+
+                if ok then
+                    module.on_attach(event.buf)
+                end
             end,
         })
     end,
