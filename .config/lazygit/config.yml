@@ -209,15 +209,10 @@ customCommands:
         title: Enter the URL of an existing revision (if applicable)
         key: ExistingRevision
       - type: input
-        title: Enter the name of the parent branch
-        key: ParentBranch
-        suggestions:
-          preset: branches
-      - type: input
         title: Enter the name of the destination branch
         key: DestinationBranch
         initialValue: mainline
         suggestions:
           preset: branches
-    command: "cr {{if .Form.ExistingRevision}} --update-review {{.Form.ExistingRevision}} {{else}} --new-review {{end}} --parent {{.Form.ParentBranch}} --destination-branch {{.Form.DestinationBranch}}"
+    command: "cr {{if .Form.ExistingRevision}} --update-review {{.Form.ExistingRevision}} {{else}} --new-review {{end}} --parent $(git parent) --destination-branch {{.Form.DestinationBranch}}"
     subprocess: true
