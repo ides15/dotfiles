@@ -21,12 +21,6 @@ vim.keymap.set(
 )
 vim.keymap.set(
     "n",
-    "<leader>x",
-    "<cmd>source %<cr>",
-    { desc = "Source current file" }
-)
-vim.keymap.set(
-    "n",
     "<leader>bd",
     "<cmd>bd<cr>",
     { desc = "Delete all buffers except current" }
