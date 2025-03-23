@@ -15,7 +15,7 @@ set(
     "n",
     "<leader>bd",
     "<cmd>bd<cr>",
-    { desc = "Delete all buffers except current" }
+    { desc = "Delete current buffer" }
 )
 set(
     "n",
