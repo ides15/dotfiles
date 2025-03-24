@@ -15,7 +15,7 @@ alias vi='nvim'
 alias v='nvim'
 
 alias bb="brazil-build"
-alias auth="mwinit -f -s"
+alias auth="mwinit -f -s -k ~/.ssh/amazon.pub"
 
 # DAG
 alias dag="/Users/jci/dev/DataAlligator/src/DataAlligator/packages/construct/bin/run.js"

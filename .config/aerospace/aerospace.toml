@@ -111,6 +111,8 @@ f = [
   'layout floating tiling',
   'mode main',
 ]
+a = ['layout accordion tiling', 'mode main']
+t = ['layout tiles tiling', 'mode main']
 
 # Windows
 [[on-window-detected]]
