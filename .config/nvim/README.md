@@ -2,8 +2,7 @@
 
 TODO
 
-- Git history at line (would be cool to open in LazyGit)
-- On Ctrl-r (references), show fzf-lua immediately with spinner instead of not showing anything until all results are shown
+- Functions hints
 - Better looking statusline
 - Folding
 - Completions
@@ -20,6 +19,7 @@ TODO
 - Re-enable Harper
 - Show minimal preview of fzf-lua results
 - Git
+  - history at line (would be cool to open in LazyGit)
   - when editing changes in LazyGit, if that buffer is already open in a tab, open in that tab
   - proper diff/merge highlighting
   - better choosing of hunks during merge conflicts
@@ -29,3 +29,5 @@ TODO
 - Move blocks of lines up and down
   - <https://github.com/echasnovski/mini.move>
 - See what SchemaStore with json-lsp does and if I configured it right or not
+- lspkind.nvim
+- cmp sources: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources

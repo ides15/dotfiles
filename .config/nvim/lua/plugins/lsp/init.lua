@@ -32,28 +32,24 @@ return {
                     require("fzf-lua").lsp_definitions()
                 end, { desc = "Definition" })
 
-                map("n", "gi", function()
+                map("n", "gri", function()
                     require("fzf-lua").lsp_implementations()
                 end, { desc = "Implementations" })
-                vim.keymap.del("n", "gri") -- Default implementations mapping
 
-                map("n", "gr", function()
+                map("n", "grr", function()
                     require("fzf-lua").lsp_references({
                         ignore_current_line = true,
                         includeDeclaration = false,
                     })
                 end, { desc = "References" })
-                vim.keymap.del("n", "grr") -- Default references mapping
 
-                map("n", "cr", function()
+                map("n", "grn", function()
                     vim.lsp.buf.rename()
                 end, { desc = "Rename" })
-                vim.keymap.del("n", "grn") -- Default rename mapping
 
-                map("n", "ca", function()
+                map("n", "gra", function()
                     require("fzf-lua").lsp_code_actions()
                 end, { desc = "Actions" })
-                vim.keymap.del("n", "gra") -- Default code actions mapping
 
                 local client =
                     vim.lsp.get_client_by_id(event.data.client_id)
