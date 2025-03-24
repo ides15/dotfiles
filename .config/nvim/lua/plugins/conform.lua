@@ -22,21 +22,21 @@ return {
     cmd = { "ConformInfo" },
     keys = {
         {
-            "<leader>cff",
+            "<leader>ff",
             function()
                 require("conform").format({ async = true })
             end,
             desc = "Format file",
         },
         {
-            "<leader>cfb",
+            "<leader>ftb",
             function()
                 toggle_format_on_save(false)
             end,
             desc = "Toggle format-on-save (buffer)",
         },
         {
-            "<leader>cfg",
+            "<leader>ftg",
             function()
                 toggle_format_on_save(true)
             end,

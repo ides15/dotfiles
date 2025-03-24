@@ -81,22 +81,22 @@ return {
         {
             "<leader>,",
             findFiles,
-            desc = "Find files",
+            desc = "Pick files",
         },
         {
-            "<leader>ff",
+            "<leader>pf",
             findFiles,
-            desc = "Find files",
+            desc = "Pick files",
         },
         {
             "<leader>.",
             findBuffers,
-            desc = "Find open buffers",
+            desc = "Pick open buffers",
         },
         {
-            "<leader>fb",
+            "<leader>pb",
             findBuffers,
-            desc = "Find open buffers",
+            desc = "Pick open buffers",
         },
         {
             "<leader>/",
@@ -120,7 +120,7 @@ return {
             desc = "Resume last picker",
         },
         {
-            "<leader>fh",
+            "<leader>ph",
             function()
                 vim.api.nvim_exec_autocmds(
                     "User",
@@ -128,7 +128,7 @@ return {
                 )
                 require("fzf-lua").highlights()
             end,
-            desc = "Find highlights",
+            desc = "Pick highlights",
         },
     },
 }
