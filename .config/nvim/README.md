@@ -2,12 +2,12 @@
 
 TODO
 
-- Functions hints
 - Better looking statusline
 - Folding
 - Completions
   - Snippets
   - Snippet for `screen.debug(undefined, Infinity)`
+  - Look into Blink for completions
 - Clear messages, make messages look better, view old messages in fzf-lua
 - Better diagnostics/Trouble/tiny-inline-diagnostics
   - Show notification somewhere if buffer has changes or diagnostics
@@ -30,4 +30,3 @@ TODO
   - <https://github.com/echasnovski/mini.move>
 - See what SchemaStore with json-lsp does and if I configured it right or not
 - lspkind.nvim
-- cmp sources: https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
