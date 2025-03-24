@@ -217,4 +217,6 @@ customCommands:
         suggestions:
           preset: branches
     command: "cr {{if .Form.ExistingRevision}} --update-review {{.Form.ExistingRevision}} {{else}} --new-review {{end}} --parent $(git parent) --destination-branch {{.Form.DestinationBranch}}"
-    subprocess: true
+    loadingText: "Creating CR revision"
+    showOutput: true
+    outputTitle: CR
