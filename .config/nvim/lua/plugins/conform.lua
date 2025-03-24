@@ -53,6 +53,7 @@ return {
             markdown = { "prettierd" },
             python = { "black" },
             bash = { "shellcheck" },
+            toml = { "taplo" },
         },
         default_format_opts = {
             lsp_format = "fallback",

@@ -70,3 +70,5 @@ export CONFIG_DIR="$HOME/.config/lazygit"
 
 eval "$(zoxide init zsh)"
 alias cd=z
+
+export TAPLO_CONFIG="$XDG_CONFIG_HOME/taplo/taplo.toml"
