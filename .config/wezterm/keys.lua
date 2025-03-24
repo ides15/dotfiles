@@ -181,6 +181,10 @@ function module.apply_to_config(config)
                 }),
             },
             {
+                key = "s",
+                action = act.PaneSelect({ mode = "SwapWithActive" }),
+            },
+            {
                 key = "Escape",
                 action = act.PopKeyTable,
             },
