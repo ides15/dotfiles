@@ -35,6 +35,7 @@ return {
                 map("n", "gi", function()
                     require("fzf-lua").lsp_implementations()
                 end, { desc = "Implementations" })
+                vim.keymap.del("n", "gri") -- Default implementations mapping
 
                 map("n", "gr", function()
                     require("fzf-lua").lsp_references({
@@ -42,14 +43,17 @@ return {
                         includeDeclaration = false,
                     })
                 end, { desc = "References" })
+                vim.keymap.del("n", "grr") -- Default references mapping
 
                 map("n", "cr", function()
                     vim.lsp.buf.rename()
                 end, { desc = "Rename" })
+                vim.keymap.del("n", "grn") -- Default rename mapping
 
                 map("n", "ca", function()
                     require("fzf-lua").lsp_code_actions()
                 end, { desc = "Actions" })
+                vim.keymap.del("n", "gra") -- Default code actions mapping
 
                 local client =
                     vim.lsp.get_client_by_id(event.data.client_id)
