@@ -46,7 +46,7 @@ export PATH="$PATH:$HOME/.toolbox/bin"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # Neovim (nightly)
-export PATH="/Users/jci/nvim-macos-arm64/bin:$PATH"
+export PATH="$HOME/local/nvim/bin/:$PATH"
 
 # Set Neovim to the default editor
 export EDITOR=$(which nvim)
