@@ -5,7 +5,6 @@ TODO
 - Better looking statusline
 - Folding
 - Completions
-  - Snippets
   - Snippet for `screen.debug(undefined, Infinity)`
   - Look into Blink for completions
 - Clear messages, make messages look better, view old messages in fzf-lua
@@ -29,4 +28,3 @@ TODO
 - Move blocks of lines up and down
   - <https://github.com/echasnovski/mini.move>
 - See what SchemaStore with json-lsp does and if I configured it right or not
-- lspkind.nvim
