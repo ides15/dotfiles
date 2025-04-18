@@ -52,7 +52,8 @@ return {
             typescriptreact = { "prettierd" },
             markdown = { "prettierd" },
             python = { "black" },
-            bash = { "shellcheck" },
+            bash = { "prettierd" },
+            sh = { "prettierd" },
             toml = { "taplo" },
         },
         default_format_opts = {

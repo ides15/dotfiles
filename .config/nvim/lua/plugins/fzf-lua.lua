@@ -13,6 +13,11 @@ local function searchFiles()
     require("fzf-lua").live_grep()
 end
 
+local function searchHelp()
+    vim.api.nvim_exec_autocmds("User", { pattern = "PickerHelp" })
+    require("fzf-lua").helptags()
+end
+
 return {
     "ibhagwan/fzf-lua",
     dependencies = { "echasnovski/mini.nvim" },
@@ -107,6 +112,11 @@ return {
             "<leader>sf",
             searchFiles,
             desc = "Search files",
+        },
+        {
+            "<leader>sh",
+            searchHelp,
+            desc = "Search help",
         },
         {
             "<leader>r",
