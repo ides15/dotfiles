@@ -55,7 +55,9 @@ git:
     - main
     - mainline
 
-  skipHookPrefix: WIP
+  skipHookPrefix: wip
+
+  branchLogCmd: git log --color --abbrev-commit --show-signature --date=local --graph
 
   parseEmoji: true
 
