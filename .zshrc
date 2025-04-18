@@ -26,6 +26,9 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 # vi mode
 bindkey -v
 
+# Set up fzf keybindings
+source <(fzf --zsh)
+
 source "$HOME/aliases.zsh"
 source "$HOME/git.zsh"
 source "$HOME/history.zsh"
