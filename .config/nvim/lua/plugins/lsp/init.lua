@@ -3,11 +3,12 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        "b0o/schemastore.nvim", -- For jsonls/yamlls schemas
         {
-            "pmizio/typescript-tools.nvim",
-            dependencies = { "nvim-lua/plenary.nvim" },
+            "folke/lazydev.nvim", -- For Lua LSP helpers
+            ft = "lua",
+            opts = {},
         },
+        "b0o/schemastore.nvim", -- For jsonls/yamlls schemas
         "hrsh7th/cmp-nvim-lsp",
     },
     config = function()

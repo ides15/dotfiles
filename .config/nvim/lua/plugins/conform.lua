@@ -55,6 +55,7 @@ return {
             bash = { "prettierd" },
             sh = { "prettierd" },
             toml = { "taplo" },
+            graphql = { "prettierd" },
         },
         default_format_opts = {
             lsp_format = "fallback",
