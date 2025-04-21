@@ -1,6 +1,7 @@
 local lspconfig = require("lspconfig")
 local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
+local schema_store = require("schemastore")
 
 mason.setup({
     ui = {
@@ -39,6 +40,29 @@ mason_lspconfig.setup({
                         command = "EslintFixAll",
                     })
                 end,
+            })
+        end,
+        jsonls = function()
+            lspconfig.jsonls.setup({
+                settings = {
+                    json = {
+                        schemas = schema_store.json.schemas(),
+                        validate = { enable = true },
+                    },
+                },
+            })
+        end,
+        yamlls = function()
+            lspconfig.yamlls.setup({
+                settings = {
+                    yaml = {
+                        schemaStore = {
+                            enable = false,
+                            url = "",
+                        },
+                        schemas = schema_store.yaml.schemas(),
+                    },
+                },
             })
         end,
     },

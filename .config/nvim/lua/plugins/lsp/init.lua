@@ -3,6 +3,7 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
+        "b0o/schemastore.nvim", -- For jsonls/yamlls schemas
         {
             "pmizio/typescript-tools.nvim",
             dependencies = { "nvim-lua/plenary.nvim" },
