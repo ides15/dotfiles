@@ -78,7 +78,3 @@ vim.opt.background = "dark"
 
 -- Turn off syntax highlighting, use TS instead
 vim.opt.syntax = "off"
-
--- -- Folding
--- vim.wo.foldmethod = "expr"
--- vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
