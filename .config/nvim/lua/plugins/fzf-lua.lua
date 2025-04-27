@@ -48,9 +48,6 @@ return {
             winopts = {
                 height = 0.5,
                 width = 0.85,
-                preview = {
-                    hidden = "hidden",
-                },
             },
             fzf_opts = {
                 ["--cycle"] = "",
@@ -139,6 +136,28 @@ return {
                 require("fzf-lua").highlights()
             end,
             desc = "Pick highlights",
+        },
+        {
+            "<leader>sc",
+            function()
+                vim.api.nvim_exec_autocmds(
+                    "User",
+                    { pattern = "PickerCommands" }
+                )
+                require("fzf-lua").command_history()
+            end,
+            desc = "Search commands",
+        },
+        {
+            "<leader>sg",
+            function()
+                vim.api.nvim_exec_autocmds(
+                    "User",
+                    { pattern = "PickerGit" }
+                )
+                require("fzf-lua").git_bcommits()
+            end,
+            desc = "Search git history of buffer",
         },
     },
 }
