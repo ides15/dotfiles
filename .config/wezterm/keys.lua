@@ -192,19 +192,43 @@ function module.apply_to_config(config)
         new_split = {
             {
                 key = "h",
-                action = act.SplitPane({ direction = "Left" }),
+                action = act.Multiple({
+                    act.SplitPane({ direction = "Left" }),
+                    act.ActivateKeyTable({
+                        name = "resize_split",
+                        one_shot = false,
+                    }),
+                }),
             },
             {
                 key = "j",
-                action = act.SplitPane({ direction = "Down" }),
+                action = act.Multiple({
+                    act.SplitPane({ direction = "Down" }),
+                    act.ActivateKeyTable({
+                        name = "resize_split",
+                        one_shot = false,
+                    }),
+                }),
             },
             {
                 key = "k",
-                action = act.SplitPane({ direction = "Up" }),
+                action = act.Multiple({
+                    act.SplitPane({ direction = "Up" }),
+                    act.ActivateKeyTable({
+                        name = "resize_split",
+                        one_shot = false,
+                    }),
+                }),
             },
             {
                 key = "l",
-                action = act.SplitPane({ direction = "Right" }),
+                action = act.Multiple({
+                    act.SplitPane({ direction = "Right" }),
+                    act.ActivateKeyTable({
+                        name = "resize_split",
+                        one_shot = false,
+                    }),
+                }),
             },
             {
                 key = "Escape",
