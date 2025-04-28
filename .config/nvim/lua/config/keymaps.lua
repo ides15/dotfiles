@@ -47,3 +47,34 @@ set("n", "<leader>gg", function()
     vim.cmd("startinsert")
     vim.cmd("setlocal cmdheight=0")
 end, { desc = "LazyGit" })
+
+set("n", "<leader>lr", "<CMD>LspRestart<CR>", {
+    desc = "Restart LSP server",
+})
+
+set("n", "<leader>li", "<CMD>LspInfo<CR>", {
+    desc = "Get information about connected LSP servers",
+})
+
+local function get_buf_name_path(modifiers)
+    local buf_full_path = vim.api.nvim_buf_get_name(0)
+    local filename = vim.fn.fnamemodify(buf_full_path, modifiers)
+    print(filename)
+    vim.fn.setreg("+", filename)
+end
+
+set("n", "<leader>cpf", function()
+    get_buf_name_path(":t")
+end, { desc = "Copy filename of buffer to clipboard" })
+
+set("n", "<leader>cph", function()
+    get_buf_name_path(":p:~")
+end, { desc = "Copy path to buffer (relative to home) to clipboard" })
+
+set("n", "<leader>cpw", function()
+    get_buf_name_path(":p:.")
+end, { desc = "Copy path to buffer (workspace) to clipboard" })
+
+set("n", "<leader>cpa", function()
+    get_buf_name_path(":p")
+end, { desc = "Copy path to buffer (absolute) to clipboard" })

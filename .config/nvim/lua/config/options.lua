@@ -50,7 +50,7 @@ vim.opt.smartindent = true
 vim.opt.showmode = false
 
 -- Don't show command line below statusline
--- vim.opt.cmdheight = 0
+vim.opt.cmdheight = 0
 
 vim.opt.spelllang = { "en" }
 
