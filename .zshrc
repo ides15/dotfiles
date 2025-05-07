@@ -34,6 +34,7 @@ source "$HOME/git.zsh"
 source "$HOME/history.zsh"
 source "$HOME/options.zsh"
 source "$HOME/zsh-syntax-highlighting.zsh"
+source "$HOME/pnpm-completion.zsh"
 
 # Bat pager
 export BAT_CONFIG_PATH="$HOME/.config/bat/bat.conf"
@@ -59,14 +60,6 @@ eval "$(mise activate zsh)"
 
 # IsengardCLI autocomplete
 eval "#(isengardcli shell-autocomplete)"
-
-# pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
 
 # Lazygit config file directory
 export CONFIG_DIR="$HOME/.config/lazygit"
