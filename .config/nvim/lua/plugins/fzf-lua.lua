@@ -72,12 +72,6 @@ return {
             },
             hls = {},
         })
-
-        vim.api.nvim_set_hl(
-            0,
-            "FzfLuaBackdrop",
-            { link = "FzfLuaNormal" }
-        )
     end,
     keys = {
         {

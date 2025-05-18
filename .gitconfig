@@ -22,14 +22,15 @@
 [interactive]
   diffFilter = delta --color-only
 
-[delta]
-  dark = true
-
 [merge]
   conflictstyle = zdiff3
 
+[include]
+  path = /Users/jci/.config/delta/themes/catppuccin.gitconfig
+
 [delta]
-  syntax-theme = kanagawa
+  dark = true
+  features = catppuccin-mocha
   side-by-side = true
   line-numbers = true
   hyperlinks = true

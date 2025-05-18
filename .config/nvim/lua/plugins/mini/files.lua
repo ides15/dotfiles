@@ -102,19 +102,6 @@ files.setup({
     content = content,
 })
 
--- Give folders different colors
-vim.api.nvim_set_hl(
-    0,
-    "MiniFilesDirectory",
-    { fg = "#908caa", bold = true }
-)
-vim.api.nvim_set_hl(
-    0,
-    "MiniFilesFile",
-    { fg = "#e0def4", bold = false }
-)
-vim.api.nvim_set_hl(0, "MiniFilesNormal", { bg = "#1A1825" })
-
 -- Don't allow both picker and mini.files to be open at the same time
 vim.api.nvim_create_autocmd("User", {
     pattern = { "PickerFiles", "PickerLiveGrep", "PickerResume" },

@@ -37,13 +37,4 @@ return {
         },
         current_line_blame_formatter = "<author>, <author_time:%R>",
     },
-    config = function(_, opts)
-        require("gitsigns").setup(opts)
-
-        vim.api.nvim_set_hl(
-            0,
-            "GitSignsCurrentLineBlame",
-            { link = "Comment" }
-        )
-    end,
 }

@@ -5,7 +5,6 @@ local schema_store = require("schemastore")
 
 mason.setup({
     ui = {
-        border = "rounded",
         width = 0.9,
         height = 0.9,
     },

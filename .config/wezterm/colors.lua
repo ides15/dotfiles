@@ -1,66 +1,52 @@
-local module = {}
+local wezterm = require("wezterm")
 
-local kanagawa = {
-    force_reverse_video_cursor = true,
-    colors = {
-        foreground = "#dcd7ba",
-        background = "#1f1f28",
+local M = {}
 
-        cursor_bg = "#c8c093",
-        cursor_fg = "#c8c093",
-        cursor_border = "#c8c093",
+local theme = "Catppuccin Mocha"
 
-        selection_fg = "#c8c093",
-        selection_bg = "#2d4f67",
-
-        scrollbar_thumb = "#16161d",
-        split = "#16161d",
-
-        ansi = {
-            "#090618",
-            "#c34043",
-            "#76946a",
-            "#c0a36e",
-            "#7e9cd8",
-            "#957fb8",
-            "#6a9589",
-            "#c8c093",
-        },
-        brights = {
-            "#727169",
-            "#e82424",
-            "#98bb6c",
-            "#e6c384",
-            "#7fb4ca",
-            "#938aa9",
-            "#7aa89f",
-            "#dcd7ba",
-        },
-        indexed = {
-            [16] = "#ffa066",
-            [17] = "#ff5d62",
-        },
-
-        tab_bar = {
-            background = "#1f1f28",
-            active_tab = {
-                bg_color = "#dcd7ba",
-                fg_color = "#1f1f28",
-            },
-            inactive_tab = {
-                bg_color = "#363646",
-                fg_color = "#dcd7ba",
-            },
-        },
-    },
+M.palette = {
+    rosewater = "#f5e0dc",
+    flamingo = "#f2cdcd",
+    pink = "#f5c2e7",
+    mauve = "#cba6f7",
+    red = "#f38ba8",
+    maroon = "#eba0ac",
+    peach = "#fab387",
+    yellow = "#f9e2af",
+    green = "#a6e3a1",
+    teal = "#94e2d5",
+    sky = "#89dceb",
+    sapphire = "#74c7ec",
+    blue = "#89b4fa",
+    lavender = "#b4befe",
+    text = "#cdd6f4",
+    subtext_1 = "#bac2de",
+    subtext_0 = "#a6adc8",
+    overlay_2 = "#9399b2",
+    overlay_1 = "#7f849c",
+    overlay_0 = "#6c7086",
+    surface_2 = "#585b70",
+    surface_1 = "#45475a",
+    surface_0 = "#313244",
+    base = "#1e1e2e",
+    mantle = "#181825",
+    crust = "#11111b",
 }
 
-module.colors = kanagawa.colors
+local custom = wezterm.color.get_builtin_schemes()[theme]
 
-function module.apply_to_config(config)
-    config.colors = kanagawa.colors
-    config.force_reverse_video_cursor =
-        kanagawa.force_reverse_video_cursor
+custom.tab_bar.background = M.palette.base
+
+custom.tab_bar.inactive_tab.bg_color = M.palette.overlay_0
+custom.tab_bar.inactive_tab.fg_color = custom.tab_bar.background
+
+M.colors = custom
+
+function M.apply_to_config(config)
+    config.color_schemes = {
+        [theme] = custom,
+    }
+    config.color_scheme = theme
 end
 
-return module
+return M

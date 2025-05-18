@@ -10,7 +10,7 @@ function module.apply_to_config(config)
         -- family = "FiraMono Nerd Font", -- 0xProto with fewer ligatures
         -- family = "JetBrainsMono Nerd Font", -- Taller, similar to FiraMono
     })
-    config.font_size = 14
+    config.font_size = 13
     config.freetype_load_flags = "NO_HINTING"
 end
 
