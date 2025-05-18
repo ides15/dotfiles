@@ -21,6 +21,8 @@ cask "ghostty" # Fancy terminal, trying this out
 cask "1password-cli" # Password manager
 brew "taplo" # TOML formatter/lsp/etc
 brew "orbstack" # Containers 
+cash "vlc" # Audio/video player
+brew "watch"
 
 # To install neovim from source
 brew "ninja"

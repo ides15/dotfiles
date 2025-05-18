@@ -5,6 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Config location
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # Load completion helpers
@@ -18,7 +19,7 @@ export HOMEBREW_NO_AUTO_UPDATE
 eval "$(op completion zsh)"; compdef _op op
 
 # Install Powerlevel10k
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -52,6 +53,9 @@ export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 # Neovim (nightly)
 export PATH="$HOME/local/nvim/bin/:$PATH"
 
+# Use neovim as MANPAGER
+export MANPAGER="nvim +Man!"
+
 # Set Neovim to the default editor
 export EDITOR=$(which nvim)
 
@@ -64,7 +68,13 @@ eval "#(isengardcli shell-autocomplete)"
 # Lazygit config file directory
 export CONFIG_DIR="$HOME/.config/lazygit"
 
+# Zoxide
 eval "$(zoxide init zsh)"
 alias cd=z
 
+# TOML tooling
 export TAPLO_CONFIG="$XDG_CONFIG_HOME/taplo/taplo.toml"
+
+# Wezterm shell integration
+source "$HOME/wezterm-shell-integration.sh"
+
