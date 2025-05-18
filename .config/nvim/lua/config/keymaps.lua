@@ -3,6 +3,11 @@ vim.g.maplocalleader = "\\"
 
 local set = vim.keymap.set
 
+set("i", "<C-h>", "<Left>")
+set("i", "<C-j>", "<Down>")
+set("i", "<C-k>", "<Up>")
+set("i", "<C-l>", "<Right>")
+
 set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Open Lazy" })
 set("n", "<leader>m", "<cmd>Mason<cr>", { desc = "Open Mason" })
 set(
@@ -78,3 +83,19 @@ end, { desc = "Copy path to buffer (workspace) to clipboard" })
 set("n", "<leader>cpa", function()
     get_buf_name_path(":p")
 end, { desc = "Copy path to buffer (absolute) to clipboard" })
+
+for i = 0, 9 do
+    set(
+        "n",
+        "z" .. i,
+        "<CMD>setlocal foldlevel=" .. i .. "<CR>",
+        { desc = "Fold on level " .. i }
+    )
+end
+
+set(
+    "n",
+    "zu",
+    "<cmd>setlocal foldlevel=99<CR>",
+    { desc = "Reset fold level" }
+)

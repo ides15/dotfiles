@@ -11,16 +11,6 @@ return {
                 additional_vim_regex_highlighting = false,
             },
 
-            incremental_selection = {
-                enable = true,
-                keymaps = {
-                    init_selection = "<C-L>",
-                    node_incremental = "<C-L>",
-                    scope_incremental = "<C-K>",
-                    node_decremental = "<C-H>",
-                },
-            },
-
             indent = {
                 enable = true,
             },

@@ -153,5 +153,16 @@ return {
             end,
             desc = "Search git history of buffer",
         },
+        {
+            "<leader>sk",
+            function()
+                vim.api.nvim_exec_autocmds(
+                    "User",
+                    { pattern = "PickerKeymaps" }
+                )
+                require("fzf-lua").keymaps()
+            end,
+            desc = "Search keymaps",
+        },
     },
 }

@@ -2,8 +2,6 @@
 
 TODO
 
-- Better looking statusline
-- Folding
 - Completions
   - Snippet for `screen.debug(undefined, Infinity)`
   - Look into Blink for completions
@@ -12,7 +10,7 @@ TODO
   - Show notification somewhere if buffer has changes or diagnostics
 - Do something with tabline (show tabs better)
   - don't like the single letter directories
-- Show if the file has been modified/added in statusline with icon
+  - do this with lualine
 - Re-enable Harper
 - Git
   - history at line (would be cool to open in LazyGit)

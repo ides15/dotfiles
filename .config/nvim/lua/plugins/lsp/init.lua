@@ -17,6 +17,10 @@ return {
         vim.api.nvim_create_autocmd("LspAttach", {
             desc = "LSP actions",
             callback = function(event)
+                -- Set up foldmethod on LSPAttach
+                vim.wo.foldmethod = "expr"
+                vim.wo.foldexpr = "v:lua.vim.lsp.foldexpr()"
+
                 local map = function(mode, lhs, rhs, o)
                     local opts = o or {}
                     opts.buffer = event.buf

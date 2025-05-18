@@ -78,3 +78,8 @@ vim.opt.background = "dark"
 
 -- Turn off syntax highlighting, use TS instead
 vim.opt.syntax = "off"
+
+-- Fold options
+vim.o.foldlevel = 99
+vim.o.foldtext = ""
+vim.wo.foldmethod = "indent" -- Fallback, we use LSP foldexpr when an LSP is attached
