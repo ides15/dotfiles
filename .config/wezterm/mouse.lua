@@ -1,6 +1,6 @@
-local module = {}
+local M = {}
 
-function module.apply_to_config(config)
+function M.apply_to_config(config)
     -- config.disable_default_mouse_bindings = true
     config.swallow_mouse_click_on_window_focus = false
 
@@ -9,4 +9,4 @@ function module.apply_to_config(config)
     config.mouse_bindings = {}
 end
 
-return module
+return M

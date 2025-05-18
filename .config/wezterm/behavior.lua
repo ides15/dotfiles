@@ -1,6 +1,6 @@
-local module = {}
+local M = {}
 
-function module.apply_to_config(config)
+function M.apply_to_config(config)
     -- Always open WezTerm to this path
     config.default_cwd = "/Users/jci/dev"
 
@@ -25,4 +25,4 @@ function module.apply_to_config(config)
     }
 end
 
-return module
+return M

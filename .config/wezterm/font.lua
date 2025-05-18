@@ -1,8 +1,8 @@
 local wezterm = require("wezterm")
 
-local module = {}
+local M = {}
 
-function module.apply_to_config(config)
+function M.apply_to_config(config)
     config.font = wezterm.font({
         family = "GeistMono Nerd Font", -- default
         -- family = "Hack Nerd Font", -- not bad, kinda short
@@ -14,4 +14,4 @@ function module.apply_to_config(config)
     config.freetype_load_flags = "NO_HINTING"
 end
 
-return module
+return M

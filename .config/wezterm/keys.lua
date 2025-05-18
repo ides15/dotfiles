@@ -2,16 +2,16 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local cb = wezterm.action_callback
 
-local module = {}
+local M = {}
 
-function module.apply_to_config(config)
+function M.apply_to_config(config)
     config.disable_default_key_bindings = true
 
     -- Open WezTerm in a real MacOS fullscreen window
     config.native_macos_fullscreen_mode = true
 
     config.keys = {
-        -- Splits and tabs key tables
+        -- Modes
         {
             key = "s",
             mods = "SUPER",
@@ -21,6 +21,15 @@ function module.apply_to_config(config)
             key = "t",
             mods = "SUPER",
             action = act.ActivateKeyTable({ name = "tabs" }),
+        },
+
+        -- Show workspaces
+        {
+            key = "l",
+            mods = "SUPER",
+            action = act.ShowLauncherArgs({
+                flags = "WORKSPACES",
+            }),
         },
 
         -- Close current pane
@@ -78,13 +87,6 @@ function module.apply_to_config(config)
             action = act.Search("CurrentSelectionOrEmptyString"),
         },
 
-        -- Copy
-        {
-            key = "c",
-            mods = "SUPER",
-            action = act.CopyTo("Clipboard"),
-        },
-
         -- Paste
         {
             key = "v",
@@ -100,6 +102,13 @@ function module.apply_to_config(config)
         },
 
         -- Decrease font size
+        {
+            key = "-",
+            mods = "SUPER",
+            action = act.DecreaseFontSize,
+        },
+
+        -- Reset font size
         {
             key = "-",
             mods = "SUPER",
@@ -174,9 +183,9 @@ function module.apply_to_config(config)
                 }),
             },
             {
-                key = "r",
+                key = "a",
                 action = act.ActivateKeyTable({
-                    name = "resize_split",
+                    name = "adjust_split",
                     one_shot = false,
                 }),
             },
@@ -192,50 +201,26 @@ function module.apply_to_config(config)
         new_split = {
             {
                 key = "h",
-                action = act.Multiple({
-                    act.SplitPane({ direction = "Left" }),
-                    act.ActivateKeyTable({
-                        name = "resize_split",
-                        one_shot = false,
-                    }),
-                }),
+                action = act.SplitPane({ direction = "Left" }),
             },
             {
                 key = "j",
-                action = act.Multiple({
-                    act.SplitPane({ direction = "Down" }),
-                    act.ActivateKeyTable({
-                        name = "resize_split",
-                        one_shot = false,
-                    }),
-                }),
+                action = act.SplitPane({ direction = "Down" }),
             },
             {
                 key = "k",
-                action = act.Multiple({
-                    act.SplitPane({ direction = "Up" }),
-                    act.ActivateKeyTable({
-                        name = "resize_split",
-                        one_shot = false,
-                    }),
-                }),
+                action = act.SplitPane({ direction = "Up" }),
             },
             {
                 key = "l",
-                action = act.Multiple({
-                    act.SplitPane({ direction = "Right" }),
-                    act.ActivateKeyTable({
-                        name = "resize_split",
-                        one_shot = false,
-                    }),
-                }),
+                action = act.SplitPane({ direction = "Right" }),
             },
             {
                 key = "Escape",
                 action = act.PopKeyTable,
             },
         },
-        resize_split = {
+        adjust_split = {
             {
                 key = "h",
                 action = act.AdjustPaneSize({ "Left", 5 }),
@@ -259,11 +244,16 @@ function module.apply_to_config(config)
         },
         tabs = {
             {
-                key = "[",
+                key = "t",
+                mods = "SUPER",
+                action = act.ActivateLastTab,
+            },
+            {
+                key = "h",
                 action = act.ActivateTabRelativeNoWrap(-1),
             },
             {
-                key = "]",
+                key = "l",
                 action = act.ActivateTabRelativeNoWrap(1),
             },
             {
@@ -298,9 +288,9 @@ function module.apply_to_config(config)
                 }),
             },
             {
-                key = "r",
+                key = "a",
                 action = act.ActivateKeyTable({
-                    name = "reorder_tab",
+                    name = "adjust_tab",
                     one_shot = false,
                 }),
             },
@@ -309,13 +299,13 @@ function module.apply_to_config(config)
                 action = act.PopKeyTable,
             },
         },
-        reorder_tab = {
+        adjust_tab = {
             {
-                key = "[",
+                key = "h",
                 action = act.MoveTabRelative(-1),
             },
             {
-                key = "]",
+                key = "l",
                 action = act.MoveTabRelative(1),
             },
             {
@@ -463,4 +453,4 @@ function module.apply_to_config(config)
     }
 end
 
-return module
+return M

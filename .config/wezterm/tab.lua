@@ -1,9 +1,5 @@
 local wezterm = require("wezterm")
-local colors = require("colors").colors
-
-local red = colors.ansi[2]
-local yellow = colors.ansi[4]
-local green = colors.ansi[3]
+local colors = require("colors")
 
 local function tab_title(tab_info)
     local title = tab_info.tab_title
@@ -15,99 +11,68 @@ local function tab_title(tab_info)
     return tab_info.active_pane.title
 end
 
-local left_icon = wezterm.nerdfonts.ple_lower_right_triangle
-local right_icon = wezterm.nerdfonts.ple_upper_left_triangle
-local circle = wezterm.nerdfonts.cod_circle_large
-local plus_circle = wezterm.nerdfonts.cod_add
-local minus_circle = wezterm.nerdfonts.cod_dash
-local x_circle = wezterm.nerdfonts.cod_close
+local left_icon = wezterm.nerdfonts.ple_upper_left_triangle
+local right_icon = wezterm.nerdfonts.ple_lower_right_triangle
 
-local module = {}
+local function format_right_status(window)
+    local ws_icon_map = {
+        ["work"] = wezterm.nerdfonts.seti_project,
+        ["config"] = wezterm.nerdfonts.seti_config,
+    }
 
-function module.apply_to_config(config)
-    -- Window actions
-    local window_actions = {}
+    local kt = window:active_key_table()
+    local ws = window:active_workspace()
+    local ws_icon = ws_icon_map[ws] and " " .. ws_icon_map[ws] or ""
 
-    local function create_window_action(action, color, content)
-        window_actions[action] = wezterm.format({
-            { Background = { Color = colors.background } },
-            { Foreground = { Color = color } },
-            { Text = content .. " " },
-        })
-    end
+    local ws_color = colors.palette.peach
+    local kt_color = colors.palette.mauve
+    local bg = colors.colors.tab_bar.background
 
-    create_window_action("window_close", red, " " .. circle)
-    create_window_action("window_close_hover", red, " " .. x_circle)
-    create_window_action("window_hide", yellow, circle)
-    create_window_action("window_hide_hover", yellow, minus_circle)
-    create_window_action("window_maximize", green, circle .. " ")
-    create_window_action(
-        "window_maximize_hover",
-        green,
-        plus_circle .. " "
-    )
+    return wezterm.format({
+        { Foreground = { Color = kt_color } },
+        { Text = kt and (kt .. " ") or "" },
+        { Background = { Color = ws_color } },
+        { Foreground = { Color = bg } },
+        { Text = left_icon },
+        { Foreground = { Color = bg } },
+        { Text = ws_icon },
+        { Background = { Color = ws_color } },
+        { Foreground = { Color = bg } },
+        { Text = " " .. ws .. "  " },
+    })
+end
 
-    config.tab_bar_style = window_actions
+local M = {}
 
-    config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
-    config.integrated_title_button_style = "Windows"
-    config.integrated_title_button_alignment = "Left"
-    config.integrated_title_button_color = "Auto"
-    config.integrated_title_buttons = { "Close", "Hide", "Maximize" }
-    --
-
-    -- Tab styling
-    wezterm.on("format-tab-title", function(tab)
-        local title = tab_title(tab)
-
-        local tab_type = tab.is_active and "active_tab"
-            or "inactive_tab"
-
-        return {
-            {
-                Foreground = {
-                    Color = colors.tab_bar[tab_type].bg_color,
-                },
-            },
-            { Background = { Color = colors.tab_bar.background } },
-            { Text = left_icon },
-
-            {
-                Background = {
-                    Color = colors.tab_bar[tab_type].bg_color,
-                },
-            },
-            {
-                Foreground = {
-                    Color = colors.tab_bar[tab_type].fg_color,
-                },
-            },
-            { Text = " " .. title .. " " },
-
-            {
-                Foreground = {
-                    Color = colors.tab_bar[tab_type].bg_color,
-                },
-            },
-            { Background = { Color = colors.tab_bar.background } },
-            { Text = right_icon },
-        }
-    end)
-    --
+function M.apply_to_config(config)
+    config.window_decorations = "RESIZE"
 
     config.use_fancy_tab_bar = false
     config.tab_max_width = 30
     config.show_new_tab_button_in_tab_bar = false
     config.show_tab_index_in_tab_bar = false
 
-    -- Show which key table is active in the status area
+    wezterm.on("format-tab-title", function(tab)
+        local title = tab_title(tab)
+        local first = tab.tab_index == 0
+
+        return {
+            { Text = first and "" or left_icon },
+            {
+                Attribute = {
+                    Intensity = tab.is_active and "Bold" or "Normal",
+                },
+            },
+            { Text = (first and "  " or " ") .. title .. " " },
+            { Text = right_icon },
+        }
+    end)
+
     wezterm.on("update-right-status", function(window)
-        local name = window:active_key_table()
-        if name then
-            name = name
-        end
-        window:set_right_status(name or "")
+        local right_status = format_right_status(window)
+
+        window:set_right_status(right_status)
     end)
 end
 
-return module
+return M
