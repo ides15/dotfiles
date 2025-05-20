@@ -20,5 +20,3 @@ TODO
   - show inline dif in the buffer with +- ?
 - Project picker
 - Resume session
-- Move blocks of lines up and down
-  - <https://github.com/echasnovski/mini.move>
