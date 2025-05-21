@@ -74,8 +74,8 @@ keybinding:
     togglePanel: <tab>
     prevItem: k
     nextItem: j
-    prevPage: <c-p>
-    nextPage: <c-n>
+    prevPage: <c-k>
+    nextPage: <c-j>
     scrollLeft: h
     scrollRight: l
     gotoTop: <disabled>
@@ -93,8 +93,8 @@ keybinding:
     confirmInEditor: <a-enter>
     remove: d
     new: n
-    scrollUpMain: <c-p>
-    scrollDownMain: <c-n>
+    scrollUpMain: <c-k>
+    scrollDownMain: <c-j>
     executeShellCommand: ":"
     createRebaseOptionsMenu: m
     pushFiles: P
