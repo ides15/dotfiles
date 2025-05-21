@@ -67,6 +67,8 @@
     # context                 # user@host
     # time                    # current time
     # =========================[ Line #2 ]=========================
+    aws
+    vi_mode
     newline                   # \n
   )
 
