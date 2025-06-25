@@ -75,6 +75,5 @@ alias cd=z
 # TOML tooling
 export TAPLO_CONFIG="$XDG_CONFIG_HOME/taplo/taplo.toml"
 
-# Wezterm shell integration
-source "$HOME/wezterm-shell-integration.sh"
-
+# # Wezterm shell integration
+# source "$HOME/wezterm-shell-integration.sh"

@@ -1,3 +1,6 @@
 [tools]
   node = "20"
   pnpm = "10"
+
+[settings]
+experimental = true

@@ -8,7 +8,7 @@ set("i", "<C-j>", "<Down>")
 set("i", "<C-k>", "<Up>")
 set("i", "<C-l>", "<Right>")
 
-set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Open Lazy" })
+set("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Open Lazy" })
 set("n", "<leader>m", "<cmd>Mason<cr>", { desc = "Open Mason" })
 set(
     { "i", "n" },

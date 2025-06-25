@@ -2,6 +2,7 @@
 
 TODO
 
+- Add plugin types
 - Completions
   - Snippet for `screen.debug(undefined, Infinity)`
   - Look into Blink for completions

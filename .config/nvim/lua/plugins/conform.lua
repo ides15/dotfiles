@@ -44,6 +44,13 @@ return {
         },
     },
     opts = {
+        formatters = {
+            kulala = {
+                command = "kulala-fmt",
+                args = { "format", "$FILENAME" },
+                stdin = false,
+            },
+        },
         formatters_by_ft = {
             lua = { "stylua" },
             javascript = { "prettierd" },
@@ -56,6 +63,7 @@ return {
             sh = { "prettierd" },
             toml = { "taplo" },
             graphql = { "prettierd" },
+            http = { "kulala" },
         },
         default_format_opts = {
             lsp_format = "fallback",

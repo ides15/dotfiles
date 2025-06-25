@@ -26,13 +26,11 @@ require("lazy").setup({
     spec = {
         { import = "plugins" },
     },
-}, {
     install = {
         colorscheme = { "catppuccin" },
     },
     ui = {
         size = { height = 0.5, width = 0.9 },
-        border = "solid",
         title = "Lazy",
     },
     checker = {
@@ -41,7 +39,7 @@ require("lazy").setup({
         frequency = 3600 * 24,
     },
     change_detection = {
-        enabled = true,
+        enabled = false,
         notify = false,
     },
 })

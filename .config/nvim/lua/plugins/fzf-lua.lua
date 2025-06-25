@@ -32,15 +32,16 @@ return {
             "--color=always",
             "--smart-case",
             "--max-columns=4096",
-            "--glob '!**/__tests__/**'",
-            "--glob '!**.test.tsx'",
-            "--glob '!**.test.ts'",
+            -- "--glob '!**/__tests__/**'",
+            -- "--glob '!**.test.tsx'",
+            -- "--glob '!**.test.ts'",
             "--glob '!**.stories.tsx'",
             "--glob '!pnpm-lock.yaml'",
             "-e",
         }
 
-        require("fzf-lua").setup({
+        local fzf_lua = require("fzf-lua")
+        fzf_lua.setup({
             defaults = {
                 git_icons = true,
                 file_icons = true,
@@ -72,6 +73,8 @@ return {
             },
             hls = {},
         })
+
+        fzf_lua.register_ui_select()
     end,
     keys = {
         {

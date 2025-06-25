@@ -13,16 +13,10 @@ function M.apply_to_config(config)
             mux.spawn_window({ workspace = "work" })
         dev_tab:set_title("dev")
 
-        local shell_tab = work_window:spawn_tab({})
+        local sh_tab = work_window:spawn_tab({})
         -- TODO check if auth'd, if not run `auth`
         -- TODO check if AWS creds assumed, if not run `isengardcli assume`
-        shell_tab:set_title("shell")
-
-        local test_tab = work_window:spawn_tab({})
-        test_tab:set_title("tests")
-
-        local ui_tab = work_window:spawn_tab({})
-        ui_tab:set_title("ui")
+        sh_tab:set_title("sh")
 
         dev_tab:activate()
 

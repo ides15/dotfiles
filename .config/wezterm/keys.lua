@@ -110,9 +110,9 @@ function M.apply_to_config(config)
 
         -- Reset font size
         {
-            key = "-",
+            key = "\\",
             mods = "SUPER",
-            action = act.DecreaseFontSize,
+            action = act.ResetFontAndWindowSize,
         },
 
         -- Debug overlay

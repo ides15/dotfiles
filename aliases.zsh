@@ -11,7 +11,7 @@ alias ......='../../../../..'
 alias l='ls -lahG'
 alias c='clear'
 alias vim='nvim'
-alias vi='nvim'
+# alias vi='nvim'
 alias v='nvim'
 
 alias bb="brazil-build"
