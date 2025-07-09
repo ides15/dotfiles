@@ -177,6 +177,10 @@ function M.apply_to_config(config)
                 action = act.ActivatePaneDirection("Right"),
             },
             {
+                key = "z",
+                action = act.TogglePaneZoomState,
+            },
+            {
                 key = "n",
                 action = act.ActivateKeyTable({
                     name = "new_split",

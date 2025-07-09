@@ -61,6 +61,8 @@ git:
 
   parseEmoji: true
 
+  autoFetch: false
+
 update:
   method: background
 
@@ -74,8 +76,8 @@ keybinding:
     togglePanel: <tab>
     prevItem: k
     nextItem: j
-    prevPage: <c-k>
-    nextPage: <c-j>
+    # prevPage: <c-k>
+    # nextPage: <c-j>
     scrollLeft: h
     scrollRight: l
     gotoTop: <disabled>
@@ -93,8 +95,8 @@ keybinding:
     confirmInEditor: <a-enter>
     remove: d
     new: n
-    scrollUpMain: <c-k>
-    scrollDownMain: <c-j>
+    # scrollUpMain: <c-k>
+    # scrollDownMain: <c-j>
     executeShellCommand: ":"
     createRebaseOptionsMenu: m
     pushFiles: P
