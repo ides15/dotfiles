@@ -21,3 +21,5 @@ TODO
   - show inline dif in the buffer with +- ?
 - Project picker
 - Resume session
+- In mini.files, show git icons on files
+- Next/previous changed git hunk

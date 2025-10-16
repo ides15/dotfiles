@@ -28,6 +28,12 @@ set(
     "<cmd>%bd|e#<cr>",
     { desc = "Delete all other buffers" }
 )
+set(
+    "n",
+    "<leader>ba",
+    "<cmd>%bd<cr>",
+    { desc = "Delete all buffers" }
+)
 
 local function on_exit(_, code, _)
     if code ~= 0 then

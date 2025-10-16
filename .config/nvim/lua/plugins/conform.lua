@@ -58,12 +58,23 @@ return {
             javascriptreact = { "prettierd" },
             typescriptreact = { "prettierd" },
             markdown = { "prettierd" },
-            python = { "black" },
+            python = {
+                -- To fix auto-fixable lint errors.
+                "ruff_fix",
+                -- To run the Ruff formatter.
+                "ruff_format",
+                -- To organize the imports.
+                "ruff_organize_imports",
+            },
             bash = { "prettierd" },
             sh = { "prettierd" },
             toml = { "taplo" },
             graphql = { "prettierd" },
             http = { "kulala" },
+            yaml = { "prettierd" },
+            json = { "prettierd" },
+            jsonc = { "prettierd" },
+            html = { "prettierd" },
         },
         default_format_opts = {
             lsp_format = "fallback",

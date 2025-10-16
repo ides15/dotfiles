@@ -6,5 +6,6 @@ return {
                 open = true, -- show open fold icons
             },
         },
+        bigfile = {},
     },
 }

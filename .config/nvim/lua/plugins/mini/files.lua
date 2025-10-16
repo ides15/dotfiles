@@ -6,7 +6,7 @@ local show_gitignore = false
 local filter = function(entry)
     local ignore = {
         [".DS_Store"] = true,
-        [".git"] = true,
+        -- [".git"] = true,
     }
 
     if ignore[entry.name] then
