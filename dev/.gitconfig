@@ -1,2 +1,5 @@
 [user]
 	email = jci@amazon.com
+
+[init]
+  defaultBranch = mainline

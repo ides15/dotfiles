@@ -78,5 +78,8 @@ alias cd=z
 # TOML tooling
 export TAPLO_CONFIG="$XDG_CONFIG_HOME/taplo/taplo.toml"
 
+# Added by smithy-mcp
+export PATH="/Users/jci/.config/smithy-mcp/mcp-servers:$PATH"
+
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"

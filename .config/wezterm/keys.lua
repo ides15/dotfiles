@@ -23,10 +23,22 @@ function M.apply_to_config(config)
             action = act.ActivateKeyTable({ name = "tabs" }),
         },
 
-        -- Show workspaces
+        -- Quick tab switching
+        {
+            key = "h",
+            mods = "SUPER",
+            action = act.ActivateTabRelative(-1),
+        },
         {
             key = "l",
             mods = "SUPER",
+            action = act.ActivateTabRelative(1),
+        },
+
+        -- Show workspaces
+        {
+            key = "l",
+            mods = "SUPER|SHIFT",
             action = act.ShowLauncherArgs({
                 flags = "WORKSPACES",
             }),
@@ -122,18 +134,18 @@ function M.apply_to_config(config)
             action = act.ShowDebugOverlay,
         },
 
-        -- Scroll up page
+        -- Scroll up line
         {
             key = "K",
             mods = "SUPER|SHIFT",
-            action = act.ScrollByLine(-30),
+            action = act.ScrollByLine(-1),
         },
 
-        -- Scroll down page
+        -- Scroll down line
         {
             key = "J",
             mods = "SUPER|SHIFT",
-            action = act.ScrollByLine(30),
+            action = act.ScrollByLine(1),
         },
 
         -- Scroll to bottom
@@ -143,18 +155,18 @@ function M.apply_to_config(config)
             action = act.ScrollToBottom,
         },
 
-        -- Scroll to next prompt
+        -- Scroll up page
         {
             key = "N",
             mods = "SUPER|SHIFT",
-            action = act.ScrollToPrompt(1),
+            action = act.ScrollByPage(1),
         },
 
-        -- Scroll to previous prompt
+        -- Scroll down page
         {
             key = "P",
             mods = "SUPER|SHIFT",
-            action = act.ScrollToPrompt(-1),
+            action = act.ScrollByPage(-1),
         },
     }
 
@@ -251,14 +263,6 @@ function M.apply_to_config(config)
                 key = "t",
                 mods = "SUPER",
                 action = act.ActivateLastTab,
-            },
-            {
-                key = "h",
-                action = act.ActivateTabRelativeNoWrap(-1),
-            },
-            {
-                key = "l",
-                action = act.ActivateTabRelativeNoWrap(1),
             },
             {
                 key = "n",

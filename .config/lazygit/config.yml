@@ -18,57 +18,38 @@ gui:
       - "#c34043"
     unstagedChangesColor:
       - "#727169"
-
   authorColors:
     "John Ide": "#7e9cd8"
-    "*": "#c8c093"
-
   branchColorPatterns:
     "^master$": "#7e9cd8"
     "^main$": "#7e9cd8"
     "^mainline$": "#7e9cd8"
     "^release-*": "#7e9cd8"
-
   showNumstatInFilesView: true
-
   showRandomTip: false
-
   showCommandLog: false
-
   showBottomLine: false
-
   showPanelJumps: false
-
   nerdFontsVersion: "3"
-
   border: rounded
-
   skipDiscardChangeWarning: true
-
 git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
-
   mainBranches:
     - master
     - main
     - mainline
-
   skipHookPrefix: wip
-
   branchLogCmd: git log --color --abbrev-commit --show-signature --date=local --graph
-
   parseEmoji: true
-
   autoFetch: false
-
+  localBranchSortOrder: recency
 update:
   method: background
-
 refresher:
   refreshInterval: 3
-
 keybinding:
   universal:
     quit: q
@@ -205,7 +186,6 @@ keybinding:
     bulkMenu: b
   commitMessage:
     commitMenu: <c-o>
-
 customCommands:
   - key: o
     description: Open or update a CR
@@ -222,5 +202,5 @@ customCommands:
           preset: branches
     command: "cr {{if .Form.ExistingRevision}} --update-review {{.Form.ExistingRevision}} {{else}} --new-review {{end}} --parent $(git parent) --destination-branch {{.Form.DestinationBranch}}"
     loadingText: "Creating CR revision"
-    showOutput: true
     outputTitle: CR
+    output: popup
