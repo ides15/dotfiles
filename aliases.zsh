@@ -13,6 +13,7 @@ alias c='clear'
 alias vim='nvim'
 # alias vi='nvim'
 alias v='nvim'
+alias k="kiro-cli"
 
 alias bb="brazil-build"
 alias auth="mwinit -f -s -k ~/.ssh/amazon.pub"

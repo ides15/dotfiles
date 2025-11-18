@@ -1,0 +1,12 @@
+{
+  "name": "general",
+  "description": "An assistant that helps with general technical tasks.",
+  "resources": ["file://README.md"],
+  "tools": ["*"],
+  "allowedTools": ["read", "introspect", "report", "aws"],
+  "toolsSettings": {
+    "aws": {
+      "autoAllowReadonly": true
+    }
+  }
+}

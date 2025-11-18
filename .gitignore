@@ -5,3 +5,5 @@
 .config/op
 .config/smithy-mcp
 .config/fish
+.kiro/agents/agent_config.json.example
+.kiro/.cli_bash_history

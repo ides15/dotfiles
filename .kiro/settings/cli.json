@@ -1,0 +1,21 @@
+{
+  "app.hideMenubarIcon": true,
+  "autocomplete.disable": true,
+  "autocomplete.theme": "catppuccin",
+  "chat.defaultAgent": "general",
+  "chat.defaultModel": "claude-sonnet-4.5",
+  "chat.disableAutoCompaction": false,
+  "chat.disableMarkdownRendering": false,
+  "chat.editMode": "vim",
+  "chat.enableCheckpoint": false,
+  "chat.enableContextUsageIndicator": true,
+  "chat.enableDelegate": true,
+  "chat.enableKnowledge": true,
+  "chat.enableNotifications": true,
+  "chat.enableTangentMode": true,
+  "chat.enableThinking": true,
+  "chat.enableTodoList": true,
+  "chat.greeting.enabled": false,
+  "inline.enabled": false,
+  "knowledge.defaultExcludePatterns": "['**/node_modules/**', '**/vendor/**', '**/venv/**', '**/.venv/**', '**/target/**', '**/build/**', '**/dist/**', '**/out/**', '**/bin/**', '**/obj/**', '**/lib/**', '**/.git/**', '**/__pycache__/**', '**/.idea/**', '**/.vscode/**', '**/.next/**', '**/.nuxt/**', '**/coverage/**', '**/.pytest_cache/**', '**/.mypy_cache/**', '**/*.min.js', '**/*.min.css']"
+}
