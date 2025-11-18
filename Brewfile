@@ -22,7 +22,9 @@ cask "1password-cli" # Password manager
 brew "taplo" # TOML formatter/lsp/etc
 brew "orbstack" # Containers 
 cash "vlc" # Audio/video player
-brew "watch"
+brew "watch" # Run commands on schedule
+brew "yazi" # Terminal file manager
+brew "ffmpeg" # Yazi dependency, but also generally helpful
 
 # To install neovim from source
 brew "ninja"
