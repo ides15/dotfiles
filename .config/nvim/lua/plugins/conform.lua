@@ -66,8 +66,8 @@ return {
                 -- To organize the imports.
                 "ruff_organize_imports",
             },
-            bash = { "prettierd" },
-            sh = { "prettierd" },
+            bash = { "shfmt" },
+            sh = { "shfmt" },
             toml = { "taplo" },
             gitconfig = { "taplo" },
             graphql = { "prettierd" },
