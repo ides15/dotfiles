@@ -25,3 +25,5 @@ _darcs
 ^/install.sh
 ^/Brewfile
 ^/Brewfile.lock.json
+
+^/.DS_Store

@@ -8,3 +8,6 @@
 .kiro/agents/agent_config.json.example
 .kiro/.cli_bash_history
 .DS_Store
+
+.ssh/*
+!.ssh/config
