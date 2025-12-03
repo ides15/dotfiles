@@ -1,5 +1,9 @@
 [user]
-	email = jci@amazon.com
+  email      = "jci@amazon.com"
+  signingkey = "BD68EE9D337CC5ED"
 
 [init]
-  defaultBranch = mainline
+  defaultBranch = "mainline"
+
+[commit]
+  gpgsign = true

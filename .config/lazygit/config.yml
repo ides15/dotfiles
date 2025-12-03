@@ -1,4 +1,17 @@
 gui:
+  authorColors:
+    "John Ide": "#7e9cd8"
+
+  branchColorPatterns:
+    "^master$": "#7e9cd8"
+    "^main$": "#7e9cd8"
+    "^mainline$": "#7e9cd8"
+    "^release-*": "#7e9cd8"
+    "^dev$*": "#7e9cd8"
+    "^staging$*": "#7e9cd8"
+
+  skipDiscardChangeWarning: true
+
   theme:
     activeBorderColor:
       - "#7e9cd8"
@@ -18,178 +31,52 @@ gui:
       - "#c34043"
     unstagedChangesColor:
       - "#727169"
-  authorColors:
-    "John Ide": "#7e9cd8"
-  branchColorPatterns:
-    "^master$": "#7e9cd8"
-    "^main$": "#7e9cd8"
-    "^mainline$": "#7e9cd8"
-    "^release-*": "#7e9cd8"
+
+  showRootItemInFileTree: false
+
   showNumstatInFilesView: true
+
   showRandomTip: false
+
   showCommandLog: false
+
   showBottomLine: false
+
   showPanelJumps: false
+
   nerdFontsVersion: "3"
-  border: rounded
-  skipDiscardChangeWarning: true
+
+  showDivergenceFromBaseBranch: arrowAndNumber
+
+  commandLogSize: 30
+
+  filterMode: fuzzy
+
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
+  pagers:
+    - pager: delta --paging=never
+
   mainBranches:
     - master
     - main
     - mainline
+
   skipHookPrefix: wip
-  branchLogCmd: git log --color --abbrev-commit --show-signature --date=local --graph
+
+  autoForwardBranches: allBranches
+
+  branchLogCmd: 'git log --graph --color=always --abbrev-commit --date=format-local:"%-I:%M %p %Z - %a, %b %-d %Y" --pretty=format:"%C(yellow)%h%C(reset)%n%C(blue)Author: %an <%ae>%C(reset)%C(green) %GK%C(reset)%n%C(#c8c093)%ar (%ad)%C(reset)%n%n  %s%n%b%N" --'
+
+  overrideGpg: true
+
   parseEmoji: true
-  autoFetch: false
+
   localBranchSortOrder: recency
-update:
-  method: background
-refresher:
-  refreshInterval: 3
-keybinding:
-  universal:
-    quit: q
-    return: <esc>
-    togglePanel: <tab>
-    prevItem: k
-    nextItem: j
-    # prevPage: <c-k>
-    # nextPage: <c-j>
-    scrollLeft: h
-    scrollRight: l
-    gotoTop: <disabled>
-    gotoBottom: <disabled>
-    toggleRangeSelect: v
-    prevBlock: h
-    nextBlock: l
-    nextMatch: n
-    prevMatch: N
-    startSearch: /
-    optionMenu: "?"
-    select: <space>
-    goInto: <enter>
-    confirm: <enter>
-    confirmInEditor: <a-enter>
-    remove: d
-    new: n
-    # scrollUpMain: <c-k>
-    # scrollDownMain: <c-j>
-    executeShellCommand: ":"
-    createRebaseOptionsMenu: m
-    pushFiles: P
-    pullFiles: p
-    refresh: R
-    createPatchOptionsMenu: <c-p>
-    nextTab: "]"
-    prevTab: "["
-    nextScreenMode: +
-    prevScreenMode: _
-    undo: u
-    redo: <c-r>
-    filteringMenu: <c-s>
-    diffingMenu: W
-    submitEditorText: <enter>
-    extrasMenu: "@"
-    toggleWhitespaceInDiffView: <c-w>
-    increaseContextInDiffView: "}"
-    decreaseContextInDiffView: "{"
-    increaseRenameSimilarityThreshold: )
-    decreaseRenameSimilarityThreshold: (
-    openDiffTool: <c-t>
-  status:
-    checkForUpdate: u
-    recentRepos: <enter>
-    allBranchesLogGraph: a
-  files:
-    commitChanges: c
-    commitChangesWithoutHook: w
-    amendLastCommit: A
-    commitChangesWithEditor: C
-    findBaseCommitForFixup: <c-f>
-    confirmDiscard: x
-    ignoreFile: i
-    refreshFiles: r
-    stashAllChanges: s
-    viewStashOptions: S
-    toggleStagedAll: a
-    viewResetOptions: D
-    fetch: f
-    toggleTreeView: "`"
-    openMergeTool: M
-    openStatusFilter: <c-b>
-    copyFileInfoToClipboard: y
-    collapseAll: "-"
-    expandAll: =
-  branches:
-    # createPullRequest: o
-    # viewPullRequestOptions: O
-    # copyPullRequestURL: <c-y>
-    checkoutBranchByName: c
-    forceCheckoutBranch: F
-    rebaseBranch: r
-    renameBranch: R
-    mergeIntoCurrentBranch: M
-    viewGitFlowOptions: i
-    fastForward: f
-    createTag: T
-    pushTag: P
-    setUpstream: u
-    fetchRemote: f
-    sortOrder: s
-  worktrees:
-    viewWorktreeOptions: w
-  commits:
-    squashDown: s
-    renameCommit: r
-    renameCommitWithEditor: R
-    viewResetOptions: g
-    markCommitAsFixup: f
-    createFixupCommit: F
-    squashAboveCommits: S
-    moveDownCommit: <c-j>
-    moveUpCommit: <c-k>
-    amendToCommit: A
-    resetCommitAuthor: a
-    pickCommit: p
-    revertCommit: t
-    cherryPickCopy: C
-    pasteCommits: V
-    markCommitAsBaseForRebase: B
-    tagCommit: T
-    checkoutCommit: <space>
-    resetCherryPick: <c-R>
-    copyCommitAttributeToClipboard: "y"
-    openLogMenu: <c-l>
-    openInBrowser: o
-    viewBisectOptions: b
-    startInteractiveRebase: i
-  amendAttribute:
-    resetAuthor: a
-    setAuthor: A
-    addCoAuthor: c
-  stash:
-    popStash: g
-    renameStash: r
-  commitFiles:
-    checkoutCommitFile: c
-  main:
-    toggleSelectHunk: a
-    pickBothHunks: b
-    editSelectHunk: E
-  submodules:
-    init: i
-    update: u
-    bulkMenu: b
-  commitMessage:
-    commitMenu: <c-o>
+
 customCommands:
   - key: o
-    description: Open or update a CR
-    context: localBranches,files,commits
+    command: "cr {{if .Form.ExistingRevision}} --update-review {{.Form.ExistingRevision}} {{else}} --new-review {{end}} --parent $(git parent) --destination-branch {{.Form.DestinationBranch}}"
+    context: localBranches
     prompts:
       - type: input
         title: Enter the URL of an existing revision (if applicable)
@@ -200,7 +87,19 @@ customCommands:
         initialValue: mainline
         suggestions:
           preset: branches
-    command: "cr {{if .Form.ExistingRevision}} --update-review {{.Form.ExistingRevision}} {{else}} --new-review {{end}} --parent $(git parent) --destination-branch {{.Form.DestinationBranch}}"
     loadingText: "Creating CR revision"
-    outputTitle: CR
+    description: Open or update a CR
     output: popup
+    outputTitle: CR
+
+keybinding:
+  universal:
+    prevItem: k
+    nextItem: j
+    scrollLeft: h
+    scrollRight: l
+    prevBlock: h
+    nextBlock: l
+    optionMenu: "?"
+    undo: u
+    redo: <c-r>

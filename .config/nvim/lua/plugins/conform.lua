@@ -69,6 +69,7 @@ return {
             bash = { "prettierd" },
             sh = { "prettierd" },
             toml = { "taplo" },
+            gitconfig = { "taplo" },
             graphql = { "prettierd" },
             http = { "kulala" },
             yaml = { "prettierd" },

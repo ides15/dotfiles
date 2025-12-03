@@ -1,42 +1,26 @@
 [includeIf "gitdir:~/dev/"]
-  path = ~/dev/.gitconfig
+  path = "~/dev/.gitconfig"
 
 [includeIf "gitdir:~/dev/personal/"]
-  path = ~/dev/personal/.gitconfig
+  path = "~/dev/personal/.gitconfig"
 
 [includeIf "gitdir:~/dotfiles/"]
-  path = ~/dev/personal/.gitconfig
+  path = "~/dev/personal/.gitconfig"
 
 [rebase]
   updateRefs = true
 
 [user]
-  name = John Ide
+  name = "John Ide"
 
 [diff]
-  colorMoved = default
-
-[core]
-  pager = delta
-
-[interactive]
-  diffFilter = delta --color-only
-
-[merge]
-  conflictstyle = zdiff3
+  colorMoved = "default"
 
 [include]
-  path = /Users/jci/.config/delta/themes/catppuccin.gitconfig
-
-[delta]
-  dark = true
-  features = catppuccin-mocha
-  side-by-side = true
-  line-numbers = true
-  hyperlinks = true
+  path = "~/.config/delta/delta.gitconfig"
 
 [alias]
   parent = "!git show-branch | grep '*' | grep -v \"$(git rev-parse --abbrev-ref HEAD)\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//' #"
 
 [init]
-  defaultBranch = main
+  defaultBranch = "main"
