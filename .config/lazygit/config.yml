@@ -32,8 +32,6 @@ gui:
     unstagedChangesColor:
       - "#727169"
 
-  showRootItemInFileTree: false
-
   showNumstatInFilesView: true
 
   showRandomTip: false
@@ -51,6 +49,8 @@ gui:
   commandLogSize: 30
 
   filterMode: fuzzy
+
+  skipSwitchWorktreeOnCheckoutWarning: true
 
 git:
   pagers:
@@ -91,6 +91,9 @@ customCommands:
     description: Open or update a CR
     output: popup
     outputTitle: CR
+
+services:
+  ssh.code.aws.dev: gitlab:code.aws.dev
 
 keybinding:
   universal:

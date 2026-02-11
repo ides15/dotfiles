@@ -18,8 +18,8 @@ function M.apply_to_config(config)
 
     -- Only show a little padding on top
     config.window_padding = {
-        left = 0,
-        right = 0,
+        left = 10,
+        right = 10,
         top = 0,
         bottom = 0,
     }

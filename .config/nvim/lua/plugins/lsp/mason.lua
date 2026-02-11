@@ -26,6 +26,7 @@ mason_lspconfig.setup({
         "marksman",
         "yamlls",
         "vtsls",
+        "uv",
     },
     handlers = {
         function(server_name)
