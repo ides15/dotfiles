@@ -28,12 +28,19 @@ set(
     "<cmd>%bd|e#<cr>",
     { desc = "Delete all other buffers" }
 )
-set(
-    "n",
-    "<leader>ba",
-    "<cmd>%bd<cr>",
-    { desc = "Delete all buffers" }
-)
+set("n", "<leader>ba", function()
+    local unsaved = {}
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.bo[buf].modified then
+            table.insert(unsaved, vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ":t"))
+        elseif vim.api.nvim_buf_is_loaded(buf) then
+            vim.api.nvim_buf_delete(buf, { force = true })
+        end
+    end
+    if #unsaved > 0 then
+        vim.notify("Unsaved: " .. table.concat(unsaved, ", "), vim.log.levels.WARN)
+    end
+end, { desc = "Delete all buffers" })
 
 local function on_exit(_, code, _)
     if code ~= 0 then

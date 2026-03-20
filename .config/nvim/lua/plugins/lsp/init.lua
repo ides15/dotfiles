@@ -29,7 +29,7 @@ return {
                 end
 
                 map("n", "K", function()
-                    vim.lsp.buf.hover({ border = "solid" })
+                    vim.lsp.buf.hover()
                 end, { desc = "Hover" })
 
                 map("n", "gd", function()

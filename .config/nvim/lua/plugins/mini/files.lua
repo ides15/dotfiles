@@ -2,6 +2,47 @@ local files = require("mini.files")
 
 local show_hidden = true
 local show_gitignore = false
+local gitignored_paths = {}
+
+vim.api.nvim_set_hl(0, "MiniFilesGitignored", { link = "Comment" })
+
+local get_exclude_patterns = function()
+    local git_dir = vim.fn.finddir(".git", ".;")
+    if git_dir == "" then
+        return {}
+    end
+    local exclude_file = git_dir .. "/info/exclude"
+    if vim.fn.filereadable(exclude_file) == 0 then
+        return {}
+    end
+    local patterns = {}
+    for _, line in ipairs(vim.fn.readfile(exclude_file)) do
+        if line ~= "" and not vim.startswith(line, "#") then
+            table.insert(patterns, vim.trim(line))
+        end
+    end
+    return patterns
+end
+
+local matches_exclude = function(entry, patterns)
+    if entry.name:match("^%.env") then
+        return true
+    end
+    for _, pattern in ipairs(patterns) do
+        local p = pattern:gsub("/$", "")
+        -- Check if entry path ends with the pattern
+        if
+            entry.path:match("/" .. vim.pesc(p) .. "$")
+            or entry.path:match("/" .. vim.pesc(p) .. "/")
+        then
+            return true
+        end
+        if entry.name == p then
+            return true
+        end
+    end
+    return false
+end
 
 local filter = function(entry)
     local ignore = {
@@ -21,10 +62,6 @@ local filter = function(entry)
 end
 
 local sort = function(entries)
-    if show_gitignore then
-        return files.default_sort(entries)
-    end
-
     local all_paths = table.concat(
         vim.iter(entries)
             :map(function(entry)
@@ -35,7 +72,6 @@ local sort = function(entries)
     )
 
     local output_lines = {}
-
     local job_id = vim.fn.jobstart(
         { "git", "check-ignore", "--stdin" },
         {
@@ -46,17 +82,29 @@ local sort = function(entries)
         }
     )
 
-    -- Command failed to run
     if job_id < 1 then
-        return entries
+        return files.default_sort(entries)
     end
 
     vim.fn.chansend(job_id, all_paths)
     vim.fn.chanclose(job_id, "stdin")
     vim.fn.jobwait({ job_id })
 
+    for _, path in ipairs(output_lines) do
+        gitignored_paths[path] = true
+    end
+
+    if show_gitignore then
+        return files.default_sort(entries)
+    end
+
+    local exclude_patterns = get_exclude_patterns()
+
     return files.default_sort(vim.iter(entries)
         :filter(function(entry)
+            if matches_exclude(entry, exclude_patterns) then
+                return true
+            end
             return not vim.tbl_contains(output_lines, entry.path)
         end)
         :totable())
@@ -75,6 +123,7 @@ end
 
 local toggle_gitignore = function()
     show_gitignore = not show_gitignore
+    gitignored_paths = {}
 
     files.refresh({ content = content })
 end
@@ -146,5 +195,26 @@ vim.api.nvim_create_autocmd("User", {
             open_file,
             { buffer = buf_id, desc = "Open file in vertical split" }
         )
+    end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "MiniFilesBufferUpdate",
+    callback = function(args)
+        local buf_id = args.data.buf_id
+        local ns =
+            vim.api.nvim_create_namespace("mini_files_gitignored")
+        vim.api.nvim_buf_clear_namespace(buf_id, ns, 0, -1)
+
+        ---@diagnostic disable-next-line: redundant-parameter
+        local line_count = vim.api.nvim_buf_line_count(buf_id)
+        for i = 1, line_count do
+            local entry = files.get_fs_entry(buf_id, i)
+            if entry and gitignored_paths[entry.path] then
+                vim.api.nvim_buf_set_extmark(buf_id, ns, i - 1, 0, {
+                    line_hl_group = "MiniFilesGitignored",
+                })
+            end
+        end
     end,
 })

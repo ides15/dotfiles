@@ -25,23 +25,23 @@ mason_lspconfig.setup({
         "lua_ls",
         "marksman",
         "yamlls",
-        "vtsls",
-        "uv",
+        "tsgo",
+        "biome",
     },
     handlers = {
         function(server_name)
             lspconfig[server_name].setup({})
         end,
-        eslint = function()
-            lspconfig.eslint.setup({
-                on_attach = function(_, bufnr)
-                    vim.api.nvim_create_autocmd("BufWritePre", {
-                        buffer = bufnr,
-                        command = "EslintFixAll",
-                    })
-                end,
-            })
-        end,
+        -- eslint = function()
+        --     lspconfig.eslint.setup({
+        --         on_attach = function(_, bufnr)
+        --             vim.api.nvim_create_autocmd("BufWritePre", {
+        --                 buffer = bufnr,
+        --                 command = "EslintFixAll",
+        --             })
+        --         end,
+        --     })
+        -- end,
         jsonls = function()
             lspconfig.jsonls.setup({
                 settings = {
