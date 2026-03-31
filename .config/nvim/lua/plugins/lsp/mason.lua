@@ -19,7 +19,6 @@ lspconfig.util.default_config.capabilities = vim.tbl_deep_extend(
 mason_lspconfig.setup({
     ensure_installed = {
         "bashls",
-        "eslint",
         "graphql",
         "jsonls",
         "lua_ls",
@@ -27,21 +26,12 @@ mason_lspconfig.setup({
         "yamlls",
         "tsgo",
         "biome",
+        "oxlint",
     },
     handlers = {
         function(server_name)
             lspconfig[server_name].setup({})
         end,
-        -- eslint = function()
-        --     lspconfig.eslint.setup({
-        --         on_attach = function(_, bufnr)
-        --             vim.api.nvim_create_autocmd("BufWritePre", {
-        --                 buffer = bufnr,
-        --                 command = "EslintFixAll",
-        --             })
-        --         end,
-        --     })
-        -- end,
         jsonls = function()
             lspconfig.jsonls.setup({
                 settings = {
