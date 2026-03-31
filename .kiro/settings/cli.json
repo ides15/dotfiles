@@ -2,7 +2,6 @@
   "app.hideMenubarIcon": true,
   "autocomplete.disable": true,
   "autocomplete.theme": "catppuccin",
-  "chat.defaultAgent": "general",
   "chat.defaultModel": "claude-opus-4.5",
   "chat.diffTool": "delta",
   "chat.disableAutoCompaction": false,
@@ -43,5 +42,7 @@
     "**/.mypy_cache/**",
     "**/*.min.js",
     "**/*.min.css"
-  ]
+  ],
+  "mcp.loadedBefore": true
 }
+
