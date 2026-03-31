@@ -1,14 +1,33 @@
-font-family = GeistMono NFM
-theme = Kanagawa Wave
-mouse-hide-while-typing = true
-working-directory = /Users/jci/dev
-macos-titlebar-style = tabs
-macos-titlebar-proxy-icon = hidden
-macos-icon = holographic
-linux-cgroup = always
+# Font
+font-family = 0xProto Nerd Font Mono
+font-size = 13
+font-feature = -calt, -liga, -dlig
+adjust-cell-width = -1
 
+# Appearance
+theme = Catppuccin Mocha
+macos-icon = glass
+mouse-hide-while-typing = true
+fullscreen = true
+macos-non-native-fullscreen = false
+cursor-style-blink = false
+window-vsync = true
+custom-shader = ./shaders/cursor_tail.glsl
+quick-terminal-position = right
+quick-terminal-size = 30%
+auto-update = off
+
+# Behavior
+working-directory = /Users/jci/dev
+window-inherit-working-directory = true
+confirm-close-surface = false
+quit-after-last-window-closed = true
+shell-integration-features = no-cursor,title
+bell-features = system
+
+# General Keybinds
 keybind = clear
-keybind = cmd+shift+r=reload_config
+keybind = cmd+shift+,=reload_config
 keybind = cmd+c=copy_to_clipboard
 keybind = cmd+v=paste_from_clipboard
 keybind = all:cmd+equal=increase_font_size:1
@@ -16,23 +35,26 @@ keybind = all:cmd+minus=decrease_font_size:1
 keybind = all:cmd+shift+equal=reset_font_size
 keybind = all:cmd+shift+minus=reset_font_size
 keybind = cmd+w=close_surface
+keybind = cmd+shift+p=jump_to_prompt:-1
+keybind = cmd+shift+n=jump_to_prompt:1
 
-# Prompt
+# Prompt Keybinds
 keybind = cmd+j=scroll_page_lines:1
 keybind = cmd+k=scroll_page_lines:-1
+keybind = cmd+shift+j=scroll_page_lines:20
+keybind = cmd+shift+k=scroll_page_lines:-20
 keybind = cmd+g=scroll_to_top
 keybind = cmd+shift+g=scroll_to_bottom
-keybind = cmd+p=jump_to_prompt:-3
-keybind = cmd+n=jump_to_prompt:3
 
-# Tabs
+# Tab Keybinds
 keybind = cmd+t=new_tab
 keybind = cmd+left_bracket=previous_tab
 keybind = cmd+right_bracket=next_tab
 keybind = cmd+shift+left_bracket=move_tab:-1
 keybind = cmd+shift+right_bracket=move_tab:1
+keybind = cmd+i=prompt_surface_title
 
-# Splits
+# Split Keybinds
 keybind = cmd+s>l=goto_split:right
 keybind = cmd+s>h=goto_split:left
 keybind = cmd+s>k=goto_split:up
@@ -41,10 +63,19 @@ keybind = cmd+s>n>l=new_split:right
 keybind = cmd+s>n>h=new_split:left
 keybind = cmd+s>n>k=new_split:up
 keybind = cmd+s>n>j=new_split:down
-keybind = cmd+s>equal=equalize_splits
+keybind = cmd+s>z=toggle_split_zoom
 
-# Resize
-keybind = cmd+r>l=resize_split:right,50
-keybind = cmd+r>h=resize_split:left,50
-keybind = cmd+r>k=resize_split:up,50
-keybind = cmd+r>j=resize_split:down,50
+# Split Adjustment Keybinds
+keybind = cmd+s>a=activate_key_table:split_adjust
+keybind = split_adjust/
+keybind = split_adjust/escape=deactivate_key_table
+keybind = split_adjust/equal=equalize_splits
+
+keybind = split_adjust/l=resize_split:right,50
+keybind = split_adjust/h=resize_split:left,50
+keybind = split_adjust/k=resize_split:up,50
+keybind = split_adjust/j=resize_split:down,50
+keybind = split_adjust/equal=equalize_splits
+
+# Quick Terminal
+keybind = cmd+shift+l=toggle_quick_terminal
