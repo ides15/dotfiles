@@ -6,6 +6,7 @@
 .config/smithy-mcp
 .config/fish
 .kiro/agents/agent_config.json.example
+.kiro/sessions/cli
 .kiro/.cli_bash_history
 .DS_Store
 

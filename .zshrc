@@ -69,6 +69,7 @@ export EDITOR=$(which nvim)
 
 # Set up mise for runtime management
 eval "$(mise activate zsh)"
+export PATH="$HOME/.local/share/mise/shims:$PATH"
 
 # IsengardCLI autocomplete
 eval "#(isengardcli shell-autocomplete)"
@@ -105,3 +106,5 @@ esac
 #
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
+
+export PATH=$HOME/.toolbox/bin:$PATH
