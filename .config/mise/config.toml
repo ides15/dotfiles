@@ -1,7 +1,8 @@
 [tools]
-  node = "20"
-  pnpm = "latest"
-  uv   = "latest"
+  node   = "20"
+  pnpm   = "latest"
+  uv     = "0.10.9"
+  python = "latest"
 
 [settings]
   experimental = true
