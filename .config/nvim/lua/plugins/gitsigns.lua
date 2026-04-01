@@ -5,6 +5,26 @@ return {
         on_attach = function()
             local gitsigns = require("gitsigns")
 
+            vim.keymap.set("n", "g]", function()
+                if vim.wo.diff then
+                    return "]c"
+                end
+                vim.schedule(function()
+                    gitsigns.next_hunk()
+                end)
+                return "<Ignore>"
+            end, { expr = true, desc = "Next hunk" })
+
+            vim.keymap.set("n", "g[", function()
+                if vim.wo.diff then
+                    return "[c"
+                end
+                vim.schedule(function()
+                    gitsigns.prev_hunk()
+                end)
+                return "<Ignore>"
+            end, { expr = true, desc = "Previous hunk" })
+
             vim.keymap.set(
                 "n",
                 "<leader>ghp",
@@ -29,12 +49,24 @@ return {
                 gitsigns.reset_buffer,
                 { desc = "Reset entire buffer" }
             )
+            vim.keymap.set("n", "<leader>ghb", function()
+                gitsigns.blame_line({ full = true })
+            end, { desc = "Blame line" })
+            vim.keymap.set(
+                "n",
+                "<leader>ghB",
+                gitsigns.toggle_current_line_blame,
+                { desc = "Toggle blame" }
+            )
         end,
         current_line_blame = true,
         current_line_blame_opts = {
             virt_text_pos = "right_align",
             delay = 500,
         },
-        current_line_blame_formatter = "<author>, <author_time:%R>",
+        current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",
+        preview_config = {
+            border = "solid",
+        },
     },
 }

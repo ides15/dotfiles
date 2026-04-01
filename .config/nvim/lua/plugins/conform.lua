@@ -46,6 +46,7 @@ return {
     opts = {
         formatters = {
             biome = {
+                ---@diagnostic disable-next-line: unused-local
                 condition = function(self, ctx)
                     return vim.fs.find(
                         { "biome.json", "biome.jsonc" },
