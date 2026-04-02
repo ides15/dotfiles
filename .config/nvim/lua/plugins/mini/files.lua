@@ -153,10 +153,13 @@ files.setup({
 
 -- Don't allow both picker and mini.files to be open at the same time
 vim.api.nvim_create_autocmd("User", {
-    pattern = { "PickerFiles", "PickerLiveGrep", "PickerResume" },
+    pattern = "MiniFilesExplorerOpen",
     callback = function()
-        if files.get_explorer_state() then
-            files.close()
+        local snacks_ok, snacks = pcall(require, "snacks")
+        if not snacks_ok then return end
+        local pickers = snacks.picker.get()
+        for _, picker in ipairs(pickers) do
+            picker:close()
         end
     end,
 })

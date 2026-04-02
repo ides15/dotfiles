@@ -22,7 +22,7 @@ return {
             dependencies = { "rafamadriz/friendly-snippets" },
         },
     },
-    event = "InsertEnter",
+    event = { "InsertEnter", "CmdlineEnter" },
     config = function()
         local cmp = require("cmp")
         local ls = require("luasnip")
@@ -105,21 +105,34 @@ return {
         })
 
         cmp.setup.cmdline("/", {
-            mapping = cmp.mapping.preset.cmdline(),
+            mapping = {
+                ["<C-Space>"] = { c = cmp.mapping.complete() },
+                ["<C-n>"] = { c = cmp.mapping.select_next_item() },
+                ["<C-p>"] = { c = cmp.mapping.select_prev_item() },
+                ["<C-e>"] = { c = cmp.mapping.close() },
+                ["<CR>"] = {
+                    c = cmp.mapping.confirm({ select = false }),
+                },
+            },
             sources = {
-                { name = "buffer" },
+                { name = "cmdline_history" },
             },
         })
 
-        -- cmp.setup.cmdline(":", {
-        --     mapping = cmp.mapping.preset.cmdline(),
-        --     sources = cmp.config.sources({
-        --         -- TODO: figure out how to not get these to show up so often
-        --
-        --         -- { name = "cmdline_history" },
-        --         -- { name = "cmdline" },
-        --         -- { name = "path" },
-        --     }),
-        -- })
+        cmp.setup.cmdline(":", {
+            mapping = {
+                ["<C-Space>"] = { c = cmp.mapping.complete() },
+                ["<C-n>"] = { c = cmp.mapping.select_next_item() },
+                ["<C-p>"] = { c = cmp.mapping.select_prev_item() },
+                ["<C-e>"] = { c = cmp.mapping.close() },
+                ["<CR>"] = {
+                    c = cmp.mapping.confirm({ select = false }),
+                },
+            },
+            sources = {
+                { name = "cmdline" },
+                { name = "path" },
+            },
+        })
     end,
 }

@@ -20,7 +20,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Don't show status line
-vim.opt.laststatus = 0
+vim.opt.laststatus = 3
 
 -- Don't wrap lines
 vim.opt.wrap = false
