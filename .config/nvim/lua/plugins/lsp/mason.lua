@@ -18,7 +18,9 @@ lspconfig.util.default_config.capabilities = vim.tbl_deep_extend(
 
 mason_lspconfig.setup({
     ensure_installed = {
+        "basedpyright",
         "bashls",
+        "efm",
         "graphql",
         "jsonls",
         "lua_ls",
@@ -26,12 +28,12 @@ mason_lspconfig.setup({
         "yamlls",
         "tsgo",
         "biome",
-        "oxlint",
     },
     handlers = {
         function(server_name)
             lspconfig[server_name].setup({})
         end,
+        efm = function() end,
         jsonls = function()
             lspconfig.jsonls.setup({
                 settings = {
@@ -57,3 +59,31 @@ mason_lspconfig.setup({
         end,
     },
 })
+
+-- efm setup (must be outside mason-lspconfig handler)
+local oxlint = {
+    lintCommand = "pnpm oxlint --format unix ${INPUT}",
+    lintStdin = false,
+    lintFormats = { "%f:%l:%c: %m" },
+    lintSource = "oxlint",
+    lintOnSave = true,
+    lintAfterOpen = true,
+}
+
+local efm_languages = {
+    javascript = { oxlint },
+    javascriptreact = { oxlint },
+    typescript = { oxlint },
+    typescriptreact = { oxlint },
+}
+
+vim.lsp.config("efm", {
+    filetypes = vim.tbl_keys(efm_languages),
+    root_markers = { "package.json", ".git" },
+    init_options = { documentFormatting = false },
+    settings = {
+        rootMarkers = { "package.json", ".git/" },
+        languages = efm_languages,
+    },
+})
+vim.lsp.enable("efm")

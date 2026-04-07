@@ -13,3 +13,7 @@ For all projects:
  * If there's more detailed content, it should go here.
  */
 ```
+
+## JavaScript/TypeScript Projects
+
+1. When adding dependencies, don't modify `package.json` - instead, run `pnpm add <dep>` or `npm install --save <dep>` - this ensures the latest "good" version is installed.

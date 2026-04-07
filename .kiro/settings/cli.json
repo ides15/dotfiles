@@ -2,11 +2,12 @@
   "app.hideMenubarIcon": true,
   "autocomplete.disable": true,
   "autocomplete.theme": "catppuccin",
-  "chat.defaultModel": "claude-opus-4.5",
+  "chat.defaultModel": "claude-opus-4.6-1m",
   "chat.diffTool": "delta",
   "chat.disableAutoCompaction": false,
   "chat.disableMarkdownRendering": false,
   "chat.editMode": "vim",
+  "chat.ui": "legacy",
   "chat.enableCheckpoint": false,
   "chat.enableContextUsageIndicator": true,
   "chat.enableDelegate": true,
@@ -45,4 +46,3 @@
   ],
   "mcp.loadedBefore": true
 }
-

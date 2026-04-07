@@ -60,9 +60,13 @@ keybind = cmd+s>h=goto_split:left
 keybind = cmd+s>k=goto_split:up
 keybind = cmd+s>j=goto_split:down
 keybind = cmd+s>n>l=new_split:right
+keybind = chain=equalize_splits
 keybind = cmd+s>n>h=new_split:left
+keybind = chain=equalize_splits
 keybind = cmd+s>n>k=new_split:up
+keybind = chain=equalize_splits
 keybind = cmd+s>n>j=new_split:down
+keybind = chain=equalize_splits
 keybind = cmd+s>z=toggle_split_zoom
 
 # Split Adjustment Keybinds
@@ -70,12 +74,12 @@ keybind = cmd+s>a=activate_key_table:split_adjust
 keybind = split_adjust/
 keybind = split_adjust/escape=deactivate_key_table
 keybind = split_adjust/equal=equalize_splits
+keybind = chain=deactivate_key_table
 
 keybind = split_adjust/l=resize_split:right,50
 keybind = split_adjust/h=resize_split:left,50
 keybind = split_adjust/k=resize_split:up,50
 keybind = split_adjust/j=resize_split:down,50
-keybind = split_adjust/equal=equalize_splits
 
 # Quick Terminal
 keybind = cmd+shift+l=toggle_quick_terminal

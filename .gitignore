@@ -4,6 +4,8 @@
 .config/raycast
 .config/op
 .config/smithy-mcp
+.config/.opengrep
+.config/.semgrep
 .config/fish
 .kiro/agents/agent_config.json.example
 .kiro/sessions/cli
