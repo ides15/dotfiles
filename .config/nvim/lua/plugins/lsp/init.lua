@@ -33,17 +33,17 @@ return {
                 end, { desc = "Hover" })
 
                 map("n", "gd", function()
-                    require("fzf-lua").lsp_definitions()
+                    Snacks.picker.lsp_definitions()
                 end, { desc = "Definition" })
 
                 map("n", "gri", function()
-                    require("fzf-lua").lsp_implementations()
+                    Snacks.picker.lsp_implementations()
                 end, { desc = "Implementations" })
 
                 map("n", "grr", function()
-                    require("fzf-lua").lsp_references({
-                        ignore_current_line = true,
-                        includeDeclaration = false,
+                    Snacks.picker.lsp_references({
+                        include_current = false,
+                        include_declaration = false,
                     })
                 end, { desc = "References" })
 
@@ -52,7 +52,7 @@ return {
                 end, { desc = "Rename" })
 
                 map("n", "gra", function()
-                    require("fzf-lua").lsp_code_actions()
+                    vim.lsp.buf.code_action()
                 end, { desc = "Actions" })
 
                 local client =

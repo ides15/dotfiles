@@ -34,7 +34,75 @@ end
 
 return {
     "folke/snacks.nvim",
+    lazy = false,
+    priority = 1000,
+    init = function()
+        vim.api.nvim_create_autocmd("DirChanged", {
+            callback = function()
+                for _, win in ipairs(vim.api.nvim_list_wins()) do
+                    local buf = vim.api.nvim_win_get_buf(win)
+                    if vim.bo[buf].filetype == "snacks_dashboard" then
+                        Snacks.dashboard.update()
+                        return
+                    end
+                end
+            end,
+        })
+    end,
     opts = {
+        lazygit = {
+            configure = false,
+            win = { width = 0, height = 0 },
+        },
+        dashboard = {
+            preset = {
+                keys = {
+                    {
+                        icon = " ",
+                        key = ",",
+                        desc = "Pick File",
+                        action = ":lua Snacks.picker.files()",
+                    },
+                    {
+                        icon = " ",
+                        key = "/",
+                        desc = "Live Grep",
+                        action = ":lua Snacks.picker.grep()",
+                    },
+                    {
+                        icon = " ",
+                        key = "g",
+                        desc = "Lazygit",
+                        action = ":lua Snacks.lazygit()",
+                    },
+                    {
+                        icon = " ",
+                        key = "p",
+                        desc = "Projects",
+                        action = ":lua Snacks.picker.projects({ confirm = { 'tcd', 'close' } })",
+                    },
+                    {
+                        icon = " ",
+                        key = "q",
+                        desc = "Quit",
+                        action = ":qa",
+                    },
+                },
+            },
+            sections = {
+                function()
+                    return {
+                        header = vim.fn.fnamemodify(
+                            vim.fn.getcwd(),
+                            ":t"
+                        ),
+                        padding = 1,
+                        align = "center",
+                    }
+                end,
+                { section = "keys", gap = 1 },
+            },
+        },
         statuscolumn = {
             left = { "mark", "sign", "git" },
             right = { "fold" },
@@ -44,7 +112,6 @@ return {
             enabled = false,
         },
         picker = {
-            auto_close = false,
             actions = {
                 send_to_quickfix = send_to_quickfix,
             },

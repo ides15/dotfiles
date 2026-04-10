@@ -5,9 +5,6 @@ return {
     },
     event = "VeryLazy",
     opts = {
-        format = {
-            level = { icons = true },
-        },
         cmdline = {
             view = "cmdline",
         },

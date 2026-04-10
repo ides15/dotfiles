@@ -48,6 +48,8 @@ set("n", "<leader>ba", function()
             "Unsaved: " .. table.concat(unsaved, ", "),
             vim.log.levels.WARN
         )
+    else
+        Snacks.dashboard()
     end
 end, { desc = "Delete all buffers" })
 
@@ -60,19 +62,7 @@ local function on_exit(_, code, _)
 end
 
 set("n", "<leader>gg", function()
-    local buf = vim.api.nvim_create_buf(false, true)
-    vim.api.nvim_open_win(buf, true, {
-        relative = "editor",
-        width = vim.o.columns,
-        height = vim.o.lines,
-        col = math.floor(vim.o.columns / 2),
-        row = math.floor(vim.o.lines / 2),
-        style = "minimal",
-    })
-
-    vim.fn.termopen("lazygit", { on_exit = on_exit })
-    vim.cmd("startinsert")
-    vim.cmd("setlocal cmdheight=0")
+    Snacks.lazygit()
 end, { desc = "LazyGit" })
 
 set("n", "<leader>lr", "<CMD>LspRestart<CR>", {

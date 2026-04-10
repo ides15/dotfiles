@@ -3,6 +3,7 @@
   pnpm   = "latest"
   uv     = "0.10.9"
   python = "latest"
+  make   = "latest"
 
 [settings]
   experimental = true
