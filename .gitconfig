@@ -27,3 +27,6 @@
 
 [blame]
   ignoreRevsFile = :(optional).git-blame-ignore-revs
+
+[core]
+  excluesFile = "~/.config/git/.gitignore_global"
