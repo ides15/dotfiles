@@ -52,6 +52,11 @@ gui:
 
   skipSwitchWorktreeOnCheckoutWarning: true
 
+os:
+  editInTerminal: false
+  edit: 'nvim --server "$NVIM" --remote-send "<C-\\><C-n>:close | edit {{filename}}<CR>"'
+  editAtLine: 'nvim --server "$NVIM" --remote-send "<C-\\><C-n>:close | edit +{{line}} {{filename}} | normal! zz<CR>"'
+
 git:
   pagers:
     - pager: delta --paging=never
@@ -72,6 +77,9 @@ git:
   parseEmoji: true
 
   localBranchSortOrder: recency
+
+refresher:
+  refreshInterval: 2
 
 customCommands:
   - key: o
