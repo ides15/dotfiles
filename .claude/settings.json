@@ -1,0 +1,40 @@
+{
+  "availableModels": [
+    "opus",
+    "sonnet"
+  ],
+  "editorMode": "vim",
+  "effortLevel": "high",
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true
+  },
+  "env": {
+    "AWS_PROFILE": "claude-code-DO-NOT-DELETE",
+    "AWS_REGION": "us-west-2",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "_ZO_DOCTOR": "0"
+  },
+  "model": "opus",
+  "permissions": {
+    "allow": [
+      "Bash(~/.claude/skills/mr/mr-diff.sh)",
+      "Bash(git diff --cached)",
+      "Bash(* | pbcopy)",
+      "Bash(pbcopy *)",
+      "Bash(printf *)",
+      "Bash(stow --adopt *)",
+      "Read(/Users/jci/.claude/**)"
+    ],
+    "defaultMode": "default"
+  },
+  "preferredNotifChannel": "ghostty",
+  "showTurnDuration": true,
+  "spinnerTipsEnabled": true,
+  "statusLine": {
+    "command": "~/.claude/scripts/statusline.sh",
+    "type": "command"
+  },
+  "terminalProgressBarEnabled": true,
+  "theme": "auto",
+  "verbose": false
+}
