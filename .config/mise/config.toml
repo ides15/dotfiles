@@ -4,6 +4,8 @@
   uv     = "0.10.9"
   python = "latest"
   make   = "latest"
+  colima = "latest"
+  lima   = "latest"
 
 [settings]
   experimental = true

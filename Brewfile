@@ -20,11 +20,11 @@ brew "zoxide" # `cd` with memory
 cask "ghostty" # Fancy terminal, trying this out
 cask "1password-cli" # Password manager
 brew "taplo" # TOML formatter/lsp/etc
-brew "orbstack" # Containers 
 cash "vlc" # Audio/video player
 brew "watch" # Run commands on schedule
 brew "yazi" # Terminal file manager
 brew "ffmpeg" # Yazi dependency, but also generally helpful
+brew "docker" # Containers (needed for colima runtime)
 
 # To install neovim from source
 brew "ninja"

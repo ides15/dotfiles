@@ -27,3 +27,9 @@ _darcs
 ^/Brewfile.lock.json
 
 ^/.DS_Store
+
+# Colima runtime state
+^/\.config/colima/_lima
+^/\.config/colima/_store
+^/\.config/colima/default/daemon
+^/\.config/colima/ssh_config

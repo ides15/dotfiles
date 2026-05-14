@@ -14,3 +14,9 @@
 
 .ssh/*
 !.ssh/config
+
+# Colima runtime state (keys, disk images, logs)
+.config/colima/_lima/
+.config/colima/_store/
+.config/colima/default/daemon/
+.config/colima/ssh_config

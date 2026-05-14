@@ -96,6 +96,9 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# Use colima socket
+export DOCKER_HOST="unix://${XDG_CONFIG_HOME}/colima/default/docker.sock"
+
 # pnpm
 export PNPM_HOME="/Users/jci/Library/pnpm"
 case ":$PATH:" in
